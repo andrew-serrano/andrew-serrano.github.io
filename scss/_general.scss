@@ -36,8 +36,7 @@ h {
 }
 
 p,
-a,
-button {
+a {
     font-family: $bodyFont;
     font-weight: 300;
 }
@@ -63,7 +62,7 @@ button {
     border: none;
     padding: 0;
     cursor: pointer;
-    #copy {
+    &#copy {
         display: none;
         font-size: 1em;
         color: $primaryColor;
