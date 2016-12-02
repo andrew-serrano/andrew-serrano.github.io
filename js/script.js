@@ -14,6 +14,7 @@ if (window.innerWidth > 1024) {
   mainContent = document.querySelector('main');
 }
 
+//Add class depending on which screen size
 mainContent.classList.add('main-content--load');
 
 function onLoad() {
@@ -26,12 +27,8 @@ function onLoad() {
   });
 }
 
-//TESTING
-// document.addEventListener("DOMContentLoaded", timeout);
-// var timeout = setTimeout(onLoad, 1000);
-
-// Execute onLoad function once DOM has finished loading
-document.addEventListener("DOMContentLoaded", onLoad);
+//When page has fully loaded all resources/files
+window.onload=onLoad;
 
 // Set height for every project depending on user screen size
 var projectView = Array.prototype.slice.call(document.querySelectorAll('.layout--setHeight')),
@@ -110,15 +107,6 @@ hoverOffMenu = function () {
     el.style.transform = "scale(1) translateX(0)";
   });
 }
-
-//Only for desktop should window resize be a concern?
-if (window.innerWidth > 1024) {
-  //Add events to items
-  menuItems.forEach(function (el) {
-    el.addEventListener('mouseover', hoverMenu);
-    el.addEventListener('mouseout', hoverOffMenu);
-  });
-}
 // End of Menu hover
 
 /*
@@ -159,11 +147,6 @@ var fixedSectionOnScroll = function () {
       }
     }
   });
-}
-
-// Add scroll even to the window object
-if (window.innerWidth > 1024) {
-  window.addEventListener('scroll', fixedSectionOnScroll);
 }
 // End of scroll
 
@@ -210,6 +193,16 @@ copyEl.addEventListener('click', function (e) {
 
 });
 // End of Copy email to clipboard
+
+// JS Events that have to run for mobile/desktop
+if (window.innerWidth > 1024) {
+  window.addEventListener('scroll', fixedSectionOnScroll);
+   menuItems.forEach(function (el) {
+    el.addEventListener('mouseover', hoverMenu);
+    el.addEventListener('mouseout', hoverOffMenu);
+  });
+}
+
 
 // External Scripts
 /* 
