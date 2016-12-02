@@ -8,7 +8,8 @@
 }
 
 html,
-body {
+body,
+#mobileFix {
     @media screen and (min-width: 1025px) {
         height: 100%;
     }
