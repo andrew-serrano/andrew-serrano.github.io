@@ -2,7 +2,7 @@
 
 //Before resources are unloaded make sure user is on top of the page
 window.addEventListener("beforeunload", function () {
-  window.scrollTo(0,0);
+  window.scrollTo(0, 0);
 });
 
 // Website Loader
@@ -21,14 +21,16 @@ function onLoad() {
   document.body.classList.add('loader--init');
   mainContent.addEventListener('transitionend', function () {
     var loader = document.querySelector('.loader'),
-      menuButton = document.getElementById('menu__button');
+        menuButton = document.getElementById('menu__button');
+
     loader.style.display = "none";
+    mainContent.classList.remove('main-content--load');
     menuButton.classList.add('menu__mobile--show');
   });
 }
 
 //When page has fully loaded all resources/files
-window.onload=onLoad;
+window.onload = onLoad;
 
 // Set height for every project depending on user screen size
 var projectView = Array.prototype.slice.call(document.querySelectorAll('.layout--setHeight')),
@@ -50,13 +52,14 @@ var menuButton = document.getElementById('menu__button'),
 menuButtonClick = function (e) {
   //Prevent the default behavior of the link
   e.preventDefault();
+  
   //Display menu when clicked
   if (menuMain.classList.contains('menu--init') || this.classList.contains('menu__mobile--init')) {
     body.classList.remove('menu--init');
     menuMain.classList.remove('menu--init');
     this.classList.remove('menu__mobile--init');
   } else {
-    body.classList.add('menu--init');    
+    body.classList.add('menu--init');
     menuMain.classList.add('menu--init');
     this.classList.add('menu__mobile--init');
   }
@@ -74,9 +77,9 @@ menuLinksClicked = function () {
 }
 
 //Add click eventlistern to elements
-menuButton.addEventListener('click', menuButtonClick, true);
+menuButton.addEventListener('click', menuButtonClick, false);
 menuLinks.forEach(function (el) {
-  el.addEventListener('click', menuLinksClicked, true);
+  el.addEventListener('click', menuLinksClicked, false);
 });
 //End of Hamburger Menu imrpove structure?
 
@@ -103,11 +106,11 @@ hoverMenu = function (e) {
   }
   // When you mouseout / hover off
 hoverOffMenu = function () {
-  menuItems.forEach(function (el) {
-    el.style.transform = "scale(1) translateX(0)";
-  });
-}
-// End of Menu hover
+    menuItems.forEach(function (el) {
+      el.style.transform = "scale(1) translateX(0)";
+    });
+  }
+  // End of Menu hover
 
 /*
   When user scrolls fix elements according to their position in the viewport
@@ -117,38 +120,38 @@ var layout = Array.prototype.slice.call(document.getElementsByClassName('layout'
 
 //Set position fixed when element is in view
 var fixedSectionOnScroll = function () {
-  layout.forEach(function (el, i) {
-    var top = el.getBoundingClientRect().top,
-      bottom = el.getBoundingClientRect().bottom,
-      title = el.children[0];
+    layout.forEach(function (el, i) {
+      var top = el.getBoundingClientRect().top,
+        bottom = el.getBoundingClientRect().bottom,
+        title = el.children[0];
 
-    //Above El
-    if (top >= 0) {
-      if (title.classList.contains('layout__inner--fixed')) {
-        title.classList.remove('layout__inner--fixed');
+      //Above El
+      if (top >= 0) {
+        if (title.classList.contains('layout__inner--fixed')) {
+          title.classList.remove('layout__inner--fixed');
+        }
       }
-    }
-    //If you're on the element
-    else if ((top <= 0 && bottom >= windowHeight)) {
-      if (!title.classList.contains('layout__inner--fixed')) {
-        title.classList.add('layout__inner--fixed');
+      //If you're on the element
+      else if ((top <= 0 && bottom >= windowHeight)) {
+        if (!title.classList.contains('layout__inner--fixed')) {
+          title.classList.add('layout__inner--fixed');
+        }
+        if (title.classList.contains('layout__inner--static')) {
+          title.classList.remove('layout__inner--static');
+        }
       }
-      if (title.classList.contains('layout__inner--static')) {
-        title.classList.remove('layout__inner--static');
+      // Below el
+      else {
+        if (!title.classList.contains('layout__inner--static')) {
+          title.classList.add('layout__inner--static');
+        }
+        if (title.classList.contains('layout__inner--fixed')) {
+          title.classList.remove('layout__inner--fixed');
+        }
       }
-    }
-    // Below el
-    else {
-      if (!title.classList.contains('layout__inner--static')) {
-        title.classList.add('layout__inner--static');
-      }
-      if (title.classList.contains('layout__inner--fixed')) {
-        title.classList.remove('layout__inner--fixed');
-      }
-    }
-  });
-}
-// End of scroll
+    });
+  }
+  // End of scroll
 
 //Anchor Tags have smooth scroll 
 var anchorTags = Array.prototype.slice.call(document.querySelectorAll(('a[href*="#"]:not([href="#"])')));
@@ -197,7 +200,7 @@ copyEl.addEventListener('click', function (e) {
 // JS Events that have to run for mobile/desktop
 if (window.innerWidth > 1024) {
   window.addEventListener('scroll', fixedSectionOnScroll);
-   menuItems.forEach(function (el) {
+  menuItems.forEach(function (el) {
     el.addEventListener('mouseover', hoverMenu);
     el.addEventListener('mouseout', hoverOffMenu);
   });
@@ -209,4 +212,81 @@ if (window.innerWidth > 1024) {
 Smooth Scroll by Dustan Kasten
 http://iamdustan.com/smoothscroll/
 */
-!function(a,b,c){"use strict";function d(){function d(a,b){this.scrollLeft=a,this.scrollTop=b}function e(a){return.5*(1-Math.cos(Math.PI*a))}function f(a){if("object"!=typeof a||null===a||a.behavior===c||"auto"===a.behavior||"instant"===a.behavior)return!0;if("object"==typeof a&&"smooth"===a.behavior)return!1;throw new TypeError("behavior not valid")}function g(c){var d,e,f;do c=c.parentNode,d=c===b.body,e=c.clientHeight<c.scrollHeight||c.clientWidth<c.scrollWidth,f="visible"===a.getComputedStyle(c,null).overflow;while(!d&&(!e||f));return d=e=f=null,c}function h(b){b.frame=a.requestAnimationFrame(h.bind(a,b));var c,d,f,g=m(),i=(g-b.startTime)/k;if(i=i>1?1:i,c=e(i),d=b.startX+(b.x-b.startX)*c,f=b.startY+(b.y-b.startY)*c,b.method.call(b.scrollable,d,f),d===b.x&&f===b.y)return void a.cancelAnimationFrame(b.frame)}function i(c,e,f){var g,i,j,k,n,o=m();c===b.body?(g=a,i=a.scrollX||a.pageXOffset,j=a.scrollY||a.pageYOffset,k=l.scroll):(g=c,i=c.scrollLeft,j=c.scrollTop,k=d),n&&a.cancelAnimationFrame(n),h({scrollable:g,method:k,startTime:o,startX:i,startY:j,x:e,y:f,frame:n})}if(!("scrollBehavior"in b.documentElement.style)){var j=a.HTMLElement||a.Element,k=468,l={scroll:a.scroll||a.scrollTo,scrollBy:a.scrollBy,scrollIntoView:j.prototype.scrollIntoView},m=a.performance&&a.performance.now?a.performance.now.bind(a.performance):Date.now;a.scroll=a.scrollTo=function(){return f(arguments[0])?void l.scroll.call(a,arguments[0].left||arguments[0],arguments[0].top||arguments[1]):void i.call(a,b.body,~~arguments[0].left,~~arguments[0].top)},a.scrollBy=function(){return f(arguments[0])?void l.scrollBy.call(a,arguments[0].left||arguments[0],arguments[0].top||arguments[1]):void i.call(a,b.body,~~arguments[0].left+(a.scrollX||a.pageXOffset),~~arguments[0].top+(a.scrollY||a.pageYOffset))},j.prototype.scrollIntoView=function(){if(f(arguments[0]))return void l.scrollIntoView.call(this,arguments[0]||!0);var c=g(this),d=c.getBoundingClientRect(),e=this.getBoundingClientRect();c!==b.body?(i.call(this,c,c.scrollLeft+e.left-d.left,c.scrollTop+e.top-d.top),a.scrollBy({left:d.left,top:d.top,behavior:"smooth"})):a.scrollBy({left:e.left,top:e.top,behavior:"smooth"})}}}"object"==typeof exports?module.exports={polyfill:d}:d()}(window,document);
+! function (a, b, c) {
+  "use strict";
+
+  function d() {
+    function d(a, b) {
+      this.scrollLeft = a, this.scrollTop = b
+    }
+
+    function e(a) {
+      return .5 * (1 - Math.cos(Math.PI * a))
+    }
+
+    function f(a) {
+      if ("object" != typeof a || null === a || a.behavior === c || "auto" === a.behavior || "instant" === a.behavior) return !0;
+      if ("object" == typeof a && "smooth" === a.behavior) return !1;
+      throw new TypeError("behavior not valid")
+    }
+
+    function g(c) {
+      var d, e, f;
+      do c = c.parentNode, d = c === b.body, e = c.clientHeight < c.scrollHeight || c.clientWidth < c.scrollWidth, f = "visible" === a.getComputedStyle(c, null).overflow; while (!d && (!e || f));
+      return d = e = f = null, c
+    }
+
+    function h(b) {
+      b.frame = a.requestAnimationFrame(h.bind(a, b));
+      var c, d, f, g = m(),
+        i = (g - b.startTime) / k;
+      if (i = i > 1 ? 1 : i, c = e(i), d = b.startX + (b.x - b.startX) * c, f = b.startY + (b.y - b.startY) * c, b.method.call(b.scrollable, d, f), d === b.x && f === b.y) return void a.cancelAnimationFrame(b.frame)
+    }
+
+    function i(c, e, f) {
+      var g, i, j, k, n, o = m();
+      c === b.body ? (g = a, i = a.scrollX || a.pageXOffset, j = a.scrollY || a.pageYOffset, k = l.scroll) : (g = c, i = c.scrollLeft, j = c.scrollTop, k = d), n && a.cancelAnimationFrame(n), h({
+        scrollable: g,
+        method: k,
+        startTime: o,
+        startX: i,
+        startY: j,
+        x: e,
+        y: f,
+        frame: n
+      })
+    }
+    if (!("scrollBehavior" in b.documentElement.style)) {
+      var j = a.HTMLElement || a.Element,
+        k = 468,
+        l = {
+          scroll: a.scroll || a.scrollTo,
+          scrollBy: a.scrollBy,
+          scrollIntoView: j.prototype.scrollIntoView
+        },
+        m = a.performance && a.performance.now ? a.performance.now.bind(a.performance) : Date.now;
+      a.scroll = a.scrollTo = function () {
+        return f(arguments[0]) ? void l.scroll.call(a, arguments[0].left || arguments[0], arguments[0].top || arguments[1]) : void i.call(a, b.body, ~~arguments[0].left, ~~arguments[0].top)
+      }, a.scrollBy = function () {
+        return f(arguments[0]) ? void l.scrollBy.call(a, arguments[0].left || arguments[0], arguments[0].top || arguments[1]) : void i.call(a, b.body, ~~arguments[0].left + (a.scrollX || a.pageXOffset), ~~arguments[0].top + (a.scrollY || a.pageYOffset))
+      }, j.prototype.scrollIntoView = function () {
+        if (f(arguments[0])) return void l.scrollIntoView.call(this, arguments[0] || !0);
+        var c = g(this),
+          d = c.getBoundingClientRect(),
+          e = this.getBoundingClientRect();
+        c !== b.body ? (i.call(this, c, c.scrollLeft + e.left - d.left, c.scrollTop + e.top - d.top), a.scrollBy({
+          left: d.left,
+          top: d.top,
+          behavior: "smooth"
+        })) : a.scrollBy({
+          left: e.left,
+          top: e.top,
+          behavior: "smooth"
+        })
+      }
+    }
+  }
+  "object" == typeof exports ? module.exports = {
+    polyfill: d
+  } : d()
+}(window, document);

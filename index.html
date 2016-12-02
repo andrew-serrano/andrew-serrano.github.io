@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Andrew's Website Portfolio</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,281 +12,287 @@
 		// Remove Hash
 		history.pushState("", document.title, window.location.pathname + window.location.search);
 	</script>
-	<link rel="stylesheet" href="css/styles.css" /> 
+	<link rel="stylesheet" href="css/styles.css" />
 </head>
 
 <body>
-	<div class="loader">
-		<div class="loader__items"></div>
-		<div class="loader__items"></div>
-		<div class="loader__items"></div>
-	</div>
-	<!--SVG START-->
-	<svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none;">
-		<!--Forward Arrow-->
-		<symbol id="toggle-forward" viewBox="0 0 477.175 477.175">
-			<path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
+	<div id="mobileFix">
+		<div class="loader">
+			<div class="loader__items"></div>
+			<div class="loader__items"></div>
+			<div class="loader__items"></div>
+		</div>
+		<!--SVG START-->
+		<svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display:none;">
+			<!--Forward Arrow-->
+			<symbol id="toggle-forward" viewBox="0 0 477.175 477.175">
+				<path d="M145.188,238.575l215.5-215.5c5.3-5.3,5.3-13.8,0-19.1s-13.8-5.3-19.1,0l-225.1,225.1c-5.3,5.3-5.3,13.8,0,19.1l225.1,225
 		c2.6,2.6,6.1,4,9.5,4s6.9-1.3,9.5-4c5.3-5.3,5.3-13.8,0-19.1L145.188,238.575z" />
-		</symbol>
-		<!-- X or Back button-->
-		<symbol id="toggle-back" viewBox="0 0 212.982 212.982">
-			<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M131.804,106.491l75.936-75.936c6.99-6.99,6.99-18.323,0-25.312
+			</symbol>
+			<!-- X or Back button-->
+			<symbol id="toggle-back" viewBox="0 0 212.982 212.982">
+				<path style="fill-rule:evenodd;clip-rule:evenodd;" d="M131.804,106.491l75.936-75.936c6.99-6.99,6.99-18.323,0-25.312
 		c-6.99-6.99-18.322-6.99-25.312,0l-75.937,75.937L30.554,5.242c-6.99-6.99-18.322-6.99-25.312,0c-6.989,6.99-6.989,18.323,0,25.312
 		l75.937,75.936L5.242,182.427c-6.989,6.99-6.989,18.323,0,25.312c6.99,6.99,18.322,6.99,25.312,0l75.937-75.937l75.937,75.937
 		c6.989,6.99,18.322,6.99,25.312,0c6.99-6.99,6.99-18.322,0-25.312L131.804,106.491z" />
-		</symbol>
-		<!--HTML-->
-		<symbol id="html" viewBox="0 0 128 128">
-			<path class="lang__html" d="M9.032 2l10.005 112.093 44.896 12.401 45.02-12.387 10.015-112.107h-109.936zm89.126 26.539l-.627 7.172-.276 3.289h-52.665000000000006l1.257 14h50.156000000000006l-.336 3.471-3.233 36.119-.238 2.27-28.196 7.749v.002l-.034.018-28.177-7.423-1.913-21.206h13.815000000000001l.979 10.919 15.287 4.081h.043v-.546l15.355-3.875 1.604-17.579h-47.698l-3.383-38.117-.329-3.883h68.939l-.33 3.539z"></path>
-		</symbol>
-		<!--CSS-->
-		<symbol id="css" viewBox="0 0 128 128">
-			<path class="lang__css" d="M8.76 1l10.055 112.883 45.118 12.58 45.244-12.626 10.063-112.837h-110.48zm89.591 25.862l-3.347 37.605.01.203-.014.467v-.004l-2.378 26.294-.262 2.336-28.36 7.844v.001l-.022.019-28.311-7.888-1.917-21.739h13.883l.985 11.054 15.386 4.17-.004.008v-.002l15.443-4.229 1.632-18.001h-32.282999999999994l-.277-3.043-.631-7.129-.331-3.828h34.748999999999995l1.264-14h-52.926l-.277-3.041-.63-7.131-.332-3.828h69.281l-.331 3.862z"></path>
-		</symbol>
-		<!--JS-->
-		<symbol id="js" viewBox="0 0 128 128">
-			<path class="lang__js" d="M2 1v125h125v-125h-125zm66.119 106.513c-1.845 3.749-5.367 6.212-9.448 7.401-6.271 1.44-12.269.619-16.731-2.059-2.986-1.832-5.318-4.652-6.901-7.901l9.52-5.83c.083.035.333.487.667 1.071 1.214 2.034 2.261 3.474 4.319 4.485 2.022.69 6.461 1.131 8.175-2.427 1.047-1.81.714-7.628.714-14.065-.001-10.115.046-20.188.046-30.188h11.709c0 11 .06 21.418 0 32.152.025 6.58.596 12.446-2.07 17.361zm48.574-3.308c-4.07 13.922-26.762 14.374-35.83 5.176-1.916-2.165-3.117-3.296-4.26-5.795 4.819-2.772 4.819-2.772 9.508-5.485 2.547 3.915 4.902 6.068 9.139 6.949 5.748.702 11.531-1.273 10.234-7.378-1.333-4.986-11.77-6.199-18.873-11.531-7.211-4.843-8.901-16.611-2.975-23.335 1.975-2.487 5.343-4.343 8.877-5.235l3.688-.477c7.081-.143 11.507 1.727 14.756 5.355.904.916 1.642 1.904 3.022 4.045-3.772 2.404-3.76 2.381-9.163 5.879-1.154-2.486-3.069-4.046-5.093-4.724-3.142-.952-7.104.083-7.926 3.403-.285 1.023-.226 1.975.227 3.665 1.273 2.903 5.545 4.165 9.377 5.926 11.031 4.474 14.756 9.271 15.672 14.981.882 4.916-.213 8.105-.38 8.581z"></path>
-		</symbol>
-	</svg>
-	<!--SVG END-->
-	<header>
-		<a id="menu__button" class="menu__mobile" href="#">
-			<span class="menu__target-container">
-				<span class="menu__target"></span>
-			<span class="menu__target"></span>
-			<span class="menu__target"></span>
-			</span>
-		</a>
-		<nav id="menu__main" class="menu">
-			<ul class="menu__items-container">
-				<li class="menu__items menu__items-1"><a href="#h-about"><span>About</span></a></li>
-				<li class="menu__items menu__items-2"><a href="#h-work"><span>Work</span></a></li>
-				<li class="menu__items menu__items-3"><a href="#h-contact"><span>Contact</span></a></li>
-			</ul>
-		</nav>
-	</header>
-	<main>
-		<section id="h-about" class="layout about">
-			<section class="layout__inner layout__inner-title layout--setHeight about__title">
-				<div class="layout__vertical-helper">
-					<div class="layout__heading">
-						<h2>About Me</h2>
-						<nav class="layout__nav">
-							<ul>
-								<li><a href="#h-work">Work</a></li>
-								<li><a href="#h-contact">Contact</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</section>
-			<section class="layout__inner layout__inner-desc about__desc">
-				<h5>I'm a Front End Web Developer based out of San Diego, CA.</h5>
-				<p>My name is Andrew Serrano who specializes in creating dynamic, fluid, and responsive websites. I've been a self taught
-					Front End Web Developer for about 1 year and since then I've been pushing to continue to educate myself and practice
-					modern web technologies.</p>
-				<h5>Education</h5>
-				<p>I graduated from Platt College of San Diego earning my Associate of Arts from there I was introduced to design principles,
-					typography, how to freelance, and work with clients.</p>
-				<p>Started my career as a graphic designer working for a small business where I had the passion for design but the love
-					for web development. Having a strong mindset I continued to teach myself the core languages and best practices of front
-					end web development which resulted in giving me a opportunity to start my career as a web developer.</p>
-				<h5>Web Development</h5>
-				<p>A user-centered mindset gives the developer a chance to make sure that the clients website I am building is user friendly,
-					accessible, easy to maintain, and SEO friendly.</p>
-				<p>Working on a team of developers showed me the importance of being a team player and listening to your co-workers thoughts
-					or worries.</p>
-			</section>
-		</section>
-		<section id="h-work" class="layout featured-proj">
-			<section class="layout__inner layout__inner-title layout--setHeight">
-				<div class="layout__vertical-helper">
-					<div class="layout__heading">
-						<h2>Work</h2>
-						<nav class="layout__nav">
-							<ul>
-								<li><a href="#h-about">About</a></li>
-								<li><a href="#h-contact">Contact</a></li>
-							</ul>
-						</nav>
-					</div>
-				</div>
-			</section>
-			<!--Start of projects-->
-			<div class="layout__inner layout__inner-desc featured-proj__container">
-				<!--1-->
-				<div id="project1" class="featured-proj__view layout--setHeight">
-					<div class="featured-proj__img">
-						<!--BG IMG?-->
-					</div>
-					<div id="projectDesc1" class="featured-proj__desc">
-						<h4>Tic Tac Toe</h4>
-						<div class="featured-proj__lang">
-							<div class="featured-proj__svg">
-								<svg class="lang">
-									<use xlink:href="#html" />
-								</svg>
-							</div>
-							<div class="featured-proj__svg">
-								<svg class="lang">
-									<use xlink:href="#css" />
-								</svg>
-							</div>
-							<div class="featured-proj__svg">
-								<svg class="lang">
-									<use xlink:href="#js" />
-								</svg>
-							</div>
+			</symbol>
+			<!--HTML-->
+			<symbol id="html" viewBox="0 0 128 128">
+				<path class="lang__html" d="M9.032 2l10.005 112.093 44.896 12.401 45.02-12.387 10.015-112.107h-109.936zm89.126 26.539l-.627 7.172-.276 3.289h-52.665000000000006l1.257 14h50.156000000000006l-.336 3.471-3.233 36.119-.238 2.27-28.196 7.749v.002l-.034.018-28.177-7.423-1.913-21.206h13.815000000000001l.979 10.919 15.287 4.081h.043v-.546l15.355-3.875 1.604-17.579h-47.698l-3.383-38.117-.329-3.883h68.939l-.33 3.539z"></path>
+			</symbol>
+			<!--CSS-->
+			<symbol id="css" viewBox="0 0 128 128">
+				<path class="lang__css" d="M8.76 1l10.055 112.883 45.118 12.58 45.244-12.626 10.063-112.837h-110.48zm89.591 25.862l-3.347 37.605.01.203-.014.467v-.004l-2.378 26.294-.262 2.336-28.36 7.844v.001l-.022.019-28.311-7.888-1.917-21.739h13.883l.985 11.054 15.386 4.17-.004.008v-.002l15.443-4.229 1.632-18.001h-32.282999999999994l-.277-3.043-.631-7.129-.331-3.828h34.748999999999995l1.264-14h-52.926l-.277-3.041-.63-7.131-.332-3.828h69.281l-.331 3.862z"></path>
+			</symbol>
+			<!--JS-->
+			<symbol id="js" viewBox="0 0 128 128">
+				<path class="lang__js" d="M2 1v125h125v-125h-125zm66.119 106.513c-1.845 3.749-5.367 6.212-9.448 7.401-6.271 1.44-12.269.619-16.731-2.059-2.986-1.832-5.318-4.652-6.901-7.901l9.52-5.83c.083.035.333.487.667 1.071 1.214 2.034 2.261 3.474 4.319 4.485 2.022.69 6.461 1.131 8.175-2.427 1.047-1.81.714-7.628.714-14.065-.001-10.115.046-20.188.046-30.188h11.709c0 11 .06 21.418 0 32.152.025 6.58.596 12.446-2.07 17.361zm48.574-3.308c-4.07 13.922-26.762 14.374-35.83 5.176-1.916-2.165-3.117-3.296-4.26-5.795 4.819-2.772 4.819-2.772 9.508-5.485 2.547 3.915 4.902 6.068 9.139 6.949 5.748.702 11.531-1.273 10.234-7.378-1.333-4.986-11.77-6.199-18.873-11.531-7.211-4.843-8.901-16.611-2.975-23.335 1.975-2.487 5.343-4.343 8.877-5.235l3.688-.477c7.081-.143 11.507 1.727 14.756 5.355.904.916 1.642 1.904 3.022 4.045-3.772 2.404-3.76 2.381-9.163 5.879-1.154-2.486-3.069-4.046-5.093-4.724-3.142-.952-7.104.083-7.926 3.403-.285 1.023-.226 1.975.227 3.665 1.273 2.903 5.545 4.165 9.377 5.926 11.031 4.474 14.756 9.271 15.672 14.981.882 4.916-.213 8.105-.38 8.581z"></path>
+			</symbol>
+		</svg>
+		<!--SVG END-->
+		<header>
+			<button id="menu__button" class="menu__mobile">
+				<span class="menu__target-container">
+					<span>
+						<span class="menu__target"></span>
+						<span class="menu__target"></span>
+						<span class="menu__target"></span>
+					</span>
+				</span>
+			</button>
+			<nav id="menu__main" class="menu">
+				<ul class="menu__items-container">
+					<li class="menu__items menu__items-1"><a href="#h-about"><span>About</span></a></li>
+					<li class="menu__items menu__items-2"><a href="#h-work"><span>Work</span></a></li>
+					<li class="menu__items menu__items-3"><a href="#h-contact"><span>Contact</span></a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<section id="h-about" class="layout about">
+				<section class="layout__inner layout__inner-title layout--setHeight about__title">
+					<div class="layout__vertical-helper">
+						<div class="layout__heading">
+							<h2>About Me</h2>
+							<nav class="layout__nav">
+								<ul>
+									<li><a href="#h-work">Work</a></li>
+									<li><a href="#h-contact">Contact</a></li>
+								</ul>
+							</nav>
 						</div>
-						<p>A Tic Tac Toe game seemed like a great project for me to get a better hand on experience using Javascript. This project
-							gave me a deeper understanding on the fundamentals of programming. My approach to this game was to create a 3x3 matrix
-							that would have specific coordinates that I could reference too. The user starts the game by clicking the squares
-							which initiates the computers turn. The computer then scans through all the squares knowing what's available for a
-							possible turn. Once it has fully scanned the arena it randomly guesses a coordinate and takes it's turn.</p>
-						<p>From there the game continues between the user and the computer until someone has finally won, loss, or a draw. Which
-							forces the game to restart and the user can continue to play again.</p>
-						<p>The biggest challenge of this project was to create a computer that had the knowledge of knowing when to take it's
-							turn, which square to pick, and to know when the user or computer has won. But the challenge gave me a opportunity
-							to learn a lot of features of the Javascript language. The improvements I would like to make to this project will
-							be a scoreboard, different difficulties for the computer, and possibly in the future to make a matchmaking setting.</p>
-						<a href="projects/tic_tac/index.html" class="featured-proj__button main-btn" target="_blank" rel="noopener noreferrer"><span class="lines"><span class="fill">View More</span></span>
+					</div>
+				</section>
+				<section class="layout__inner layout__inner-desc about__desc">
+					<h5>I'm a Front End Web Developer based out of San Diego, CA.</h5>
+					<p>My name is Andrew Serrano who specializes in creating dynamic, fluid, and responsive websites. I've been a self taught
+						Front End Web Developer for about 1 year and since then I've been pushing to continue to educate myself and practice
+						modern web technologies.</p>
+					<h5>Education</h5>
+					<p>I graduated from Platt College of San Diego earning my Associate of Arts from there I was introduced to design principles,
+						typography, how to freelance, and work with clients.</p>
+					<p>Started my career as a graphic designer working for a small business where I had the passion for design but the love
+						for web development. Having a strong mindset I continued to teach myself the core languages and best practices of front
+						end web development which resulted in giving me a opportunity to start my career as a web developer.</p>
+					<h5>Web Development</h5>
+					<p>A user-centered mindset gives the developer a chance to make sure that the clients website I am building is user friendly,
+						accessible, easy to maintain, and SEO friendly.</p>
+					<p>Working on a team of developers showed me the importance of being a team player and listening to your co-workers thoughts
+						or worries.</p>
+				</section>
+			</section>
+			<section id="h-work" class="layout featured-proj">
+				<section class="layout__inner layout__inner-title layout--setHeight">
+					<div class="layout__vertical-helper">
+						<div class="layout__heading">
+							<h2>Work</h2>
+							<nav class="layout__nav">
+								<ul>
+									<li><a href="#h-about">About</a></li>
+									<li><a href="#h-contact">Contact</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</section>
+				<!--Start of projects-->
+				<div class="layout__inner layout__inner-desc featured-proj__container">
+					<!--1-->
+					<div id="project1" class="featured-proj__view layout--setHeight">
+						<div class="featured-proj__img">
+							<!--BG IMG?-->
+						</div>
+						<div id="projectDesc1" class="featured-proj__desc">
+							<h4>Tic Tac Toe</h4>
+							<div class="featured-proj__lang">
+								<div class="featured-proj__svg">
+									<svg class="lang">
+										<use xlink:href="#html" />
+									</svg>
+								</div>
+								<div class="featured-proj__svg">
+									<svg class="lang">
+										<use xlink:href="#css" />
+									</svg>
+								</div>
+								<div class="featured-proj__svg">
+									<svg class="lang">
+										<use xlink:href="#js" />
+									</svg>
+								</div>
+							</div>
+							<p>A Tic Tac Toe game seemed like a great project for me to get a better hand on experience using Javascript. This project
+								gave me a deeper understanding on the fundamentals of programming. My approach to this game was to create a 3x3 matrix
+								that would have specific coordinates that I could reference too. The user starts the game by clicking the squares
+								which initiates the computers turn. The computer then scans through all the squares knowing what's available for
+								a possible turn. Once it has fully scanned the arena it randomly guesses a coordinate and takes it's turn.</p>
+							<p>From there the game continues between the user and the computer until someone has finally won, loss, or a draw. Which
+								forces the game to restart and the user can continue to play again.</p>
+							<p>The biggest challenge of this project was to create a computer that had the knowledge of knowing when to take it's
+								turn, which square to pick, and to know when the user or computer has won. But the challenge gave me a opportunity
+								to learn a lot of features of the Javascript language. The improvements I would like to make to this project will
+								be a scoreboard, different difficulties for the computer, and possibly in the future to make a matchmaking setting.</p>
+							<a href="projects/tic_tac/index.html" class="featured-proj__button main-btn" target="_blank" rel="noopener noreferrer"><span class="lines"><span class="fill">View More</span></span>
+							</a>
+						</div>
+						<!--Toggle-->
+						<a href="#project1" class="featured-proj__toggle-back">
+							<svg>
+								<use xlink:href="#toggle-back" />
+							</svg>
+						</a>
+						<a href="#projectDesc1" class="featured-proj__toggle featured-proj__toggle-forward">
+							<svg class="lang">
+								<use xlink:href="#toggle-forward" />
+							</svg>
 						</a>
 					</div>
-					<!--Toggle-->
-					<a href="#project1" class="featured-proj__toggle-back">
-						<svg>
-							<use xlink:href="#toggle-back" />
-						</svg>
-					</a>
-					<a href="#projectDesc1" class="featured-proj__toggle featured-proj__toggle-forward">
-						<svg class="lang">
-							<use xlink:href="#toggle-forward" />
-						</svg>
-					</a>
-				</div>
-				<!--2-->
-				<div id="project2" class="featured-proj__view layout--setHeight">
-					<div class="featured-proj__img">
-						<!--BG IMG?-->
-					</div>
-					<div id="projectDesc2" class="featured-proj__desc">
-						<h4>Full Build with custom menu</h4>
-						<div class="featured-proj__lang">
-							<div class="featured-proj__svg">
-								<svg class="lang">
-									<use xlink:href="#html" />
-								</svg>
-							</div>
-							<div class="featured-proj__svg">
-								<svg class="lang">
-									<use xlink:href="#css" />
-								</svg>
-							</div>
-							<div class="featured-proj__svg">
-								<svg class="lang">
-									<use xlink:href="#js" />
-								</svg>
-							</div>
+					<!--2-->
+					<div id="project2" class="featured-proj__view layout--setHeight">
+						<div class="featured-proj__img">
+							<!--BG IMG?-->
 						</div>
-						<p>I was given the opportunity to create a custom hamburger menu for a new theme we we're building at my job. This project
-							definitely had it's challenges which were, how will our users interact with this menu, if our users have multiple
-							navigational items create dropdowns, how will the user interact with the dropdowns, and making sure the menu worked
-							on multiple browsers and devices.</p>
-						<p>Also making the navigation a full width menu gave me a lot of real estate to play around with layout and design. I
-							got a chance to work closely with our UI/UX lead to understand the best practices for the hamburger menu. Which were
-							hamburger menu placement, how would our client age group interact with the menu, and what modern styling could we
-							add to the menu without causing to big of a distraction from the main functionality.</p>
-						<a href="http://www.fmgwebsites.com/80a4fa45-d91a-48c7-b70b-0f8d961a04c4/" class="featured-proj__button main-btn" target="_blank"
-								rel="noopener noreferrer"><span class="lines"><span class="fill">View More</span></span></a>
-					</div>
-					<!--Toggle-->
-					<a href="#project2" class="featured-proj__toggle-back">
-						<svg>
-							<use xlink:href="#toggle-back" />
-						</svg>
-					</a>
-					<a href="#projectDesc2" class="featured-proj__toggle featured-proj__toggle-forward">
-						<svg class="lang">
-							<use xlink:href="#toggle-forward" />
-						</svg>
-					</a>
-				</div>
-				<!--3-->
-				<div id="project3" class="featured-proj__view layout--setHeight">
-					<div class="featured-proj__img">
-						<!--BG IMG?-->
-					</div>
-					<div id="projectDesc3" class="featured-proj__desc">
-						<h4>Code Pen Projects</h4>
-						<div class="featured-proj__lang">
-							<div class="featured-proj__svg">
-								<svg class="lang">
-									<use xlink:href="#html" />
-								</svg>
+						<div id="projectDesc2" class="featured-proj__desc">
+							<h4>Full Build with custom menu</h4>
+							<div class="featured-proj__lang">
+								<div class="featured-proj__svg">
+									<svg class="lang">
+										<use xlink:href="#html" />
+									</svg>
+								</div>
+								<div class="featured-proj__svg">
+									<svg class="lang">
+										<use xlink:href="#css" />
+									</svg>
+								</div>
+								<div class="featured-proj__svg">
+									<svg class="lang">
+										<use xlink:href="#js" />
+									</svg>
+								</div>
 							</div>
-							<div class="featured-proj__svg">
-								<svg class="lang">
-									<use xlink:href="#css" />
-								</svg>
-							</div>
-							<div class="featured-proj__svg">
-								<svg class="lang">
-									<use xlink:href="#js" />
-								</svg>
-							</div>
+							<p>I was given the opportunity to create a custom hamburger menu for a new theme we we're building at my job. This project
+								definitely had it's challenges which were, how will our users interact with this menu, if our users have multiple
+								navigational items create dropdowns, how will the user interact with the dropdowns, and making sure the menu worked
+								on multiple browsers and devices.</p>
+							<p>Also making the navigation a full width menu gave me a lot of real estate to play around with layout and design. I
+								got a chance to work closely with our UI/UX lead to understand the best practices for the hamburger menu. Which were
+								hamburger menu placement, how would our client age group interact with the menu, and what modern styling could we
+								add to the menu without causing to big of a distraction from the main functionality.</p>
+							<a href="http://www.fmgwebsites.com/80a4fa45-d91a-48c7-b70b-0f8d961a04c4/" class="featured-proj__button main-btn" target="_blank"
+									rel="noopener noreferrer"><span class="lines"><span class="fill">View More</span></span></a>
 						</div>
-						<p>This is a collection of my latest codepens containing anything from experimental technology projects, trying to create
-							the same functionality of libraries I used everyday, and fun CSS only projects.</p>
-						<p>Codepen serves a great purpose to me giving me a chance to see what other professionals in my industry are doing or
-							what they can do with the tools provided. Everytime I visit the site I find my favorite pen project and try to figure
-							out how they accomplished their final project. In result I am introduced to new libraries, frameworks, or unknown
-							properties that my language has to offer but I never knew about.</p>
-						<a href="http://codepen.io/drewskadoo/" class="featured-proj__button main-btn" target="_blank" rel="noopener noreferrer"><span class="lines"><span class="fill">View More</span></span>
+						<!--Toggle-->
+						<a href="#project2" class="featured-proj__toggle-back">
+							<svg>
+								<use xlink:href="#toggle-back" />
+							</svg>
+						</a>
+						<a href="#projectDesc2" class="featured-proj__toggle featured-proj__toggle-forward">
+							<svg class="lang">
+								<use xlink:href="#toggle-forward" />
+							</svg>
 						</a>
 					</div>
-					<!--Toggle-->
-					<a href="#project3" class="featured-proj__toggle-back">
-						<svg>
-							<use xlink:href="#toggle-back" />
-						</svg>
-					</a>
-					<a href="#projectDesc3" class="featured-proj__toggle featured-proj__toggle-forward">
-						<svg class="lang">
-							<use xlink:href="#toggle-forward" />
-						</svg>
-					</a>
-				</div>
-			</div>
-		</section>
-		<section id="h-contact" class="layout contact">
-			<section class="layout__inner layout__inner-title layout--setHeight contact__title">
-				<div class="layout__vertical-helper">
-					<div class="layout__heading">
-						<h2>Contact Me</h2>
-						<nav class="layout__nav">
-							<ul>
-								<li><a href="#h-about">About</a></li>
-								<li><a href="#h-work">Work</a></li>
-							</ul>
-						</nav>
+					<!--3-->
+					<div id="project3" class="featured-proj__view layout--setHeight">
+						<div class="featured-proj__img">
+							<!--BG IMG?-->
+						</div>
+						<div id="projectDesc3" class="featured-proj__desc">
+							<h4>Code Pen Projects</h4>
+							<div class="featured-proj__lang">
+								<div class="featured-proj__svg">
+									<svg class="lang">
+										<use xlink:href="#html" />
+									</svg>
+								</div>
+								<div class="featured-proj__svg">
+									<svg class="lang">
+										<use xlink:href="#css" />
+									</svg>
+								</div>
+								<div class="featured-proj__svg">
+									<svg class="lang">
+										<use xlink:href="#js" />
+									</svg>
+								</div>
+							</div>
+							<p>This is a collection of my latest codepens containing anything from experimental technology projects, trying to create
+								the same functionality of libraries I used everyday, and fun CSS only projects.</p>
+							<p>Codepen serves a great purpose to me giving me a chance to see what other professionals in my industry are doing or
+								what they can do with the tools provided. Everytime I visit the site I find my favorite pen project and try to figure
+								out how they accomplished their final project. In result I am introduced to new libraries, frameworks, or unknown
+								properties that my language has to offer but I never knew about.</p>
+							<a href="http://codepen.io/drewskadoo/" class="featured-proj__button main-btn" target="_blank" rel="noopener noreferrer"><span class="lines"><span class="fill">View More</span></span>
+							</a>
+						</div>
+						<!--Toggle-->
+						<a href="#project3" class="featured-proj__toggle-back">
+							<svg>
+								<use xlink:href="#toggle-back" />
+							</svg>
+						</a>
+						<a href="#projectDesc3" class="featured-proj__toggle featured-proj__toggle-forward">
+							<svg class="lang">
+								<use xlink:href="#toggle-forward" />
+							</svg>
+						</a>
 					</div>
 				</div>
 			</section>
-			<div class="layout__inner layout__inner-desc contact__desc">
-				<p>If you would like to contact me please send me a email at <a href="mailto:andrewsphotography30@yahoo.com">andrewsphotography30@yahoo.com</a>
-					<button id="copy"> / copy to clipboard</button>
-				</p>
-				<h5>Andrew Serrano</h5>
-				<h6>Front End Web Developer &amp; Designer</h6>
-				<!--ADD social-->
-				<a href="files/serrano_andrew_resume.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
-			</div>
-			<!--<div class="contact__fields">Fields Go Here</div>-->
-		</section>
-	</main>
-	<footer class="copyright">
-		<p>Copyright &copy; 2016 Andrew Serrano</p>
-	</footer>
-	<script type="text/javascript" src="js/script.min.js"></script>	
+			<section id="h-contact" class="layout contact">
+				<section class="layout__inner layout__inner-title layout--setHeight contact__title">
+					<div class="layout__vertical-helper">
+						<div class="layout__heading">
+							<h2>Contact Me</h2>
+							<nav class="layout__nav">
+								<ul>
+									<li><a href="#h-about">About</a></li>
+									<li><a href="#h-work">Work</a></li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</section>
+				<div class="layout__inner layout__inner-desc contact__desc">
+					<p>If you would like to contact me please send me a email at <a href="mailto:andrewsphotography30@yahoo.com">andrewsphotography30@yahoo.com</a>
+						<button id="copy"> / copy to clipboard</button>
+					</p>
+					<h5>Andrew Serrano</h5>
+					<h6>Front End Web Developer &amp; Designer</h6>
+					<!--ADD social-->
+					<a href="files/serrano_andrew_resume.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
+				</div>
+				<!--<div class="contact__fields">Fields Go Here</div>-->
+			</section>
+		</main>
+		<footer class="copyright">
+			<p>Copyright &copy; 2016 Andrew Serrano</p>
+		</footer>
+		<script type="text/javascript" src="js/script.js"></script>
+		<!--<script type="text/javascript" src="js/script.min.js"></script>		-->
+	</div>
 </body>
+
 </html>

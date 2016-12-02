@@ -46,7 +46,7 @@
 
 body {
     overflow: hidden;
-    >.main-content--load {
+    .main-content--load {
         z-index: 0;
         transform: translateY(100%);
     }
@@ -55,7 +55,7 @@ body {
         .loader {
             animation-play-state: paused;
         }
-        >.main-content--load {
+        .main-content--load {
             transform: translateY(0%);
             z-index: 110;
         }
