@@ -1,0 +1,32 @@
+// Font Styles
+$headingFont: 'Proxima Nova Bold', Arial, Helvetica, sans-serif;
+$bodyFont: 'Proxima Nova Regular', Arial, Helvetica, sans-serif;
+$descriptionFont: 'Pacifico', $headingFont, cursive;
+
+
+//Global
+$baseline: 1;
+$layoutHeightMobile: 736px;
+$layoutHeightMobileLandscape: 414px;
+$layoutHeightDesktop: 960px;
+$transition: cubic-bezier(.5, 0, .1, 1);
+// Projects
+$projects: 3;            
+$projectImg: '../images/project_tic_tac_toe.jpg', '../images/project_menu.jpg', '../images/project_codepen.jpg';
+
+// Colors
+$white: #fff;
+$black: #333;
+$contentBG: #eee;
+$primaryColor: #1e698d;
+$secondaryColor: #131925;
+$tertiaryColor: #789fbb;
+
+//Mobile Menu
+$menuBg: #489eba;
+
+//SVG Icons
+$svgBg: $secondaryColor;
+
+// Footer
+$footerBg: #333;

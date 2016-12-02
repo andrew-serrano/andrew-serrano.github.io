@@ -1,0 +1,66 @@
+// Loader
+.loader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: $secondaryColor;
+    z-index: 100;
+    transition: opacity 0.85s $transition;
+    &__items {
+        background: $white;
+        width: em(20);
+        height: em(20);
+        position: relative;
+        border-radius: 50%;
+        transform-origin: 50% 50%;
+        margin: 0 em(5);
+        transform: scale(0);
+        @for $i from 1 through 3 { 
+            &:nth-child(#{$i}) {
+                animation: loading 1s #{$i * 333}ms linear infinite;
+            }
+        }
+        @at-root {
+            @keyframes loading {
+                0%,
+                100% {
+                    transform: scale(0);
+                }
+                50% {
+                    transform: scale(1);
+                }
+            }
+        }
+    }
+    p {
+        color: $white;
+        max-width: 50%;
+    }
+}
+
+body {
+    overflow: hidden;
+    >.main-content--load {
+        z-index: 0;
+        transform: translateY(100%);
+    }
+    &.loader--init {
+        overflow: auto;
+        .loader {
+            animation-play-state: paused;
+        }
+        >.main-content--load {
+            transform: translateY(0%);
+            z-index: 110;
+        }
+        .loader {
+            opacity: 0;
+        }
+    }
+}

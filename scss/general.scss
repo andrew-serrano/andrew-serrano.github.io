@@ -1,0 +1,164 @@
+//  Global Styles
+* {
+    box-sizing: border-box;
+    &:before,
+    &:after {
+        box-sizing: border-box;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-size: 16px;
+    font-family: 'Proxima Nova Regular', Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+    background: $secondaryColor;
+}
+
+// Headings Font Size
+h {
+    @include g-heading(60, $black, 0 0 em(16));
+}
+
+p,
+a,
+button {
+    font-family: $bodyFont;
+    font-weight: 300;
+}
+
+p {
+    padding: #{$baseline * em(24)} 0;
+    line-height: em(28);
+    font-size: em(15);
+    letter-spacing: em(0.25);
+}
+
+a {
+    text-decoration: none;
+    color: $primaryColor;
+}
+
+button {
+    display: none;
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0;
+    font-size: 1em;
+    color: $primaryColor;
+    cursor: pointer;
+    @media screen and (min-width: 1025px) {
+        display: inline-block;
+    }
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+//Generl Project Button
+.main-btn {
+    width: em(200);
+    height: em(50);
+    margin: em(50) auto 0;
+    color: $white;
+    font-family: $bodyFont;
+    letter-spacing: em(1);
+    overflow: hidden;
+    display: block;
+    position: relative;
+    //No hover for mobile make the button solid
+    @media screen and (max-width: 1024px) {
+        background: $primaryColor;
+    }
+    &:hover,
+    &:focus {
+        &:before,
+        &:after {
+            transform: translateX(0px);
+            transition: transform 0.3s 0s $transition;
+        }
+        .lines {
+            &:before,
+            &:after {
+                transform: translateY(0px);
+                transition: transform 0.3s 0.3s $transition;
+            }
+            .fill:before {
+                transform: translateX(0px);
+                transition: transform 0.3s 0.6s $transition;
+            }
+        }
+    }
+    &:before,
+    &:after {
+        content: '';
+        width: 100%;
+        position: absolute;
+        height: em(2);
+        background: $primaryColor;
+        left: 0;
+        right: 0;
+        transition: transform 0.3s 0.6s $transition;
+    }
+    &:before {
+        top: 0;
+        transform: translateX(100%);
+    }
+    &:after {
+        bottom: 0;
+        transform: translateX(-100%);
+    }
+    .lines {
+        width: 100%;
+        height: 100%;
+        display: block;
+        position: relative;
+        &:before,
+        &:after {
+            content: '';
+            width: 2px;
+            position: absolute;
+            height: 100%;
+            background: $primaryColor;
+            transition: transform 0.3s 0.3s $transition;
+        }
+        &:before {
+            top: 0;
+            left: 1px;
+            transform: translateY(-100%);
+        }
+        &:after {
+            bottom: 0;
+            right: 0;
+            transform: translateY(100%);
+        }
+        .fill {
+            position: relative;
+            display: block;
+            height: 100%;
+            text-align: center;
+            line-height: 3;
+            &:before {
+                content: '';
+                position: absolute;
+                z-index: -10;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                background: $primaryColor;
+                transform: translateX(-100%);
+                transition: transform 0.3s 0s $transition;
+            }
+        }
+    }
+}

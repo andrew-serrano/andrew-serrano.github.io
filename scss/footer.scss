@@ -1,0 +1,10 @@
+//  Footer Styles
+footer {
+    &.copyright {
+        width: 100%;
+        height: em(40);
+        color: $white;
+        background: $footerBg;
+        @include v-align-text;
+    }
+}

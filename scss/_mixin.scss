@@ -1,0 +1,77 @@
+//General Heading Function
+@mixin g-heading ($maxFontSize: null, $color: null, $margin: 0 0 15px ) {
+  @if($maxFontSize) {
+    @for $i from 1 through 6 {
+      &#{$i} {
+        margin: $margin;
+        font-size: #{($maxFontSize / 16) - ($i - $i * 0.5)}em;
+        color: $color;
+        font-family: $headingFont;
+      }
+    }
+  }
+  @else {
+    @error 'Please provide a pixel unit';
+  }
+}
+
+// Vertical Align Snippet using Calc
+@function v-align($value) {
+  @return calc((100vh / 2) - (#{$value} / 2)) auto 0;
+}
+
+//Vertical align text on links
+@mixin v-align-text {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  &:after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    width: auto;
+  }
+}
+
+//Layout Template
+@mixin col($grid: null, $float: null) {
+  $gridColSize: 8.333333;
+  $gridColSpan: 12;
+  $toPercentage: 1%;
+  @if($grid) {
+    @for $i from 1 through 12 {
+      @if ($i==$grid) {
+        width: $i * $gridColSize * $toPercentage;
+        @if($float) {
+          @if ($float=='left') {
+            float: left;
+          }
+          @else {
+            float: right;
+          }
+        }
+      }
+    }
+  }
+  @else {
+    @error 'Please provide a column size';
+  }
+}
+
+//Float Clear Fix
+@mixin col-clear-fix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+//Px to em
+@function em($value: null) {
+  @if ($value == null) {
+    @error 'Please provide a number';
+  }
+  @return ($value / 16) * 1em;
+}

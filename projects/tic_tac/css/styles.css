@@ -1,0 +1,258 @@
+    /*#7af5fd* -- Blue*/
+/*
+ GENERAL====================================================================
+*/
+    * {
+        box-sizing: border-box;
+    }
+    body {
+        padding: 0;
+        margin: 0;
+        border: 1px solid transparent;
+    }
+    p {
+        font-family: "Roboto Condensed", sans-serif;
+        font-size: 2em;
+    }
+    .headline {
+        text-align: center;
+        margin: 15px 0;
+    }
+    .headline span {
+        font-family: 'Sigmar One';
+        color: #7af5fd;
+        font-size: 5em;
+    }
+    .headline span:first-child {
+        color: #FD93D5;
+    }
+    .headline span:last-child {
+        color: #9CFD93;
+    }
+/*
+ GAME==============================================================================
+*/
+    .tic {
+        width: 700px;
+        margin: 0 auto;
+    }
+    .tic:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    .tic__block {
+        float: left;
+        width: 33.333333%;
+        height: 233.3px;
+        text-align: center;
+        position: relative;
+        cursor: pointer;
+    }
+    .tic__block:first-child {
+        border-top-left-radius: 10px;
+    }
+    .tic__block:nth-child(3) {
+        border-top-right-radius: 10px;
+    }
+    .tic__block:nth-child(7) {
+        border-bottom-left-radius: 10px;
+    }
+    .tic__block:last-child {
+        border-bottom-right-radius: 10px;
+    }
+    .tic__block:first-child,
+    .tic__block:nth-child(3),
+    .tic__block:nth-child(7),  
+    .tic__block:last-child  {
+        border: 8px solid #7af5fd;
+    }
+    .tic__block:nth-child(2), 
+    .tic__block:nth-child(8) {
+        border-top: 8px solid #7af5fd;
+        border-bottom: 8px solid #7af5fd;
+    }
+    .tic__block:nth-child(4),
+    .tic__block:nth-child(6) {
+        border-right: 8px solid #7af5fd;
+        border-left: 8px solid #7af5fd;
+    }
+    [data-value="o"] {
+        cursor: default;
+    }
+    [data-value="x"]:after,
+    [data-value="o"]:after {
+        font-size: 10em;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-family: 'FontAwesome';    
+    }
+
+    [data-value="x"]:after {
+        content: '\f00d';
+        color: #FD93D5;
+    }
+
+    [data-value="o"]:after {
+        content: '\f10c';
+        color: #9CFD93;
+    }
+
+    .tic__block-bounce:after {
+        animation: bounce 0.3s forwards;
+    }
+/*
+COMPUTER MODULE====================================================================
+*/
+    .status__overlay {
+        background-color: rgba(255, 255, 255, 0.75);
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        display: none;
+        z-index: 10;
+    }
+
+    .status__overlay--show,
+    .status__icon {
+        display: block;
+    }
+
+    .status__module {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .status__icon-container {
+        height: 250px;
+        width: 250px;
+        margin: 0 auto 0;
+        border-radius: 50%;
+        background: #9CFD93;
+    }
+
+    .status__icon-container--winner #trophy,
+    .status__icon-container--lose #trophy,
+    .status__icon-container--tied #tied {
+        display: block;
+    }
+
+    .status__icon-container--winner {
+        background: #73daf9;
+    } 
+
+    .status__icon-container--lose {
+        background: #f36464;
+    }
+    .status__icon-container--lose #trophy {
+        animation: trohpyLost 1.5s 1 forwards;
+    }
+
+    .status__description {
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .status__timer {
+        display: block;
+        position: relative;
+        top: 50px;
+    }
+    
+    .status__timer--show {
+        animation: restartShow 0.3s 2s 1 forwards;
+    }
+    svg {
+        width: 130px;
+        height: 100%;
+        margin: 0 auto;
+    }
+
+    /*Computer Icon*/
+    #computer {
+        fill: #234221;
+        fill-opacity: 0;
+        stroke: #234221;
+        stroke-width: 5px;
+        stroke-linecap: round;
+        animation: strokeAnimation 3s forwards;
+    }
+
+    #computer .l-eye,
+    #computer .r-eye {
+        transform-origin: 50% 50%;
+        transform: scale(1);
+        animation: wink 1s  infinite forwards;
+    }
+
+    #trophy, #tied {
+        display: none;
+    }
+
+
+/*
+ANIMATIONS======================================================================
+*/
+    @keyframes strokeAnimation {
+        0% {
+            stroke-width: 15px;
+            stroke-dasharray: 250px, 1000px;
+            stroke-dashoffset: 1000px;
+        }
+        100% {
+            fill-opacity: 1;
+            stroke-width: 0;
+            stroke-dasharray: 0, 0;
+            stroke-dashoffset: 0;
+        }
+    }
+    @keyframes restartShow {
+        100% {
+          top: 0;  
+        }
+    }
+    @keyframes trohpyLost {
+        0% {
+            transform: translate(0);
+        }
+        50% {
+            transform: translate(0px, -40px);
+        }
+        75% {
+            transform: rotate(180deg);
+        }
+        100% {
+            transform: translate(0px, 0px) rotate(180deg);
+        }
+    }
+     @keyframes bounce {
+        0% {
+            transform: translate(-50%,-50%) scale(0);
+        }
+        50% {
+            transform: translate(-50%,-50%) scale(1.25);
+        }
+        100% {
+            transform: translate(-50%,-50%) scale(1);
+        }
+    }
+    @keyframes wink {
+        0% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(0.75);
+        }
+        100% {
+            transform: scale(1);
+        }
+    }
+
+
+
+
+
