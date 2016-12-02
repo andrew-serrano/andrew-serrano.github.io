@@ -5,6 +5,12 @@ footer {
         height: em(40);
         color: $white;
         background: $footerBg;
-        @include v-align-text;
+        p {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            font-size: em(12);
+            @include v-align-text;
+        }
     }
 }

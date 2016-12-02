@@ -1,6 +1,6 @@
 /*
 Error: Undefined variable: "$white".
-        on line 6 of /mnt/e/wamp64/www/website_andrew/./scss/footer.scss
+        on line 6 of /mnt/e/wamp64/www/andrew-serrano.github.io/./scss/footer.scss
 
 1: //  Footer Styles
 2: footer {
@@ -9,12 +9,13 @@ Error: Undefined variable: "$white".
 5:         height: em(40);
 6:         color: $white;
 7:         background: $footerBg;
-8:         @include v-align-text;
-9:     }
-10: }
+8:         p {
+9:             width: 100%;
+10:             height: 100%;
+11:             padding: 0;
 
 Backtrace:
-/mnt/e/wamp64/www/website_andrew/./scss/footer.scss:6
+/mnt/e/wamp64/www/andrew-serrano.github.io/./scss/footer.scss:6
 /var/lib/gems/1.9.1/gems/sass-3.4.22/lib/sass/script/tree/variable.rb:49:in `_perform'
 /var/lib/gems/1.9.1/gems/sass-3.4.22/lib/sass/script/tree/node.rb:58:in `perform'
 /var/lib/gems/1.9.1/gems/sass-3.4.22/lib/sass/tree/visitors/perform.rb:397:in `visit_prop'
@@ -80,4 +81,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$white\".\A         on line 6 of /mnt/e/wamp64/www/website_andrew/./scss/footer.scss\A \A 1: //  Footer Styles\A 2: footer {\A 3:     &.copyright {\A 4:         width: 100%;\A 5:         height: em(40);\A 6:         color: $white;\A 7:         background: $footerBg;\A 8:         @include v-align-text;\A 9:     }\A 10: }"; }
+  content: "Error: Undefined variable: \"$white\".\A         on line 6 of /mnt/e/wamp64/www/andrew-serrano.github.io/./scss/footer.scss\A \A 1: //  Footer Styles\A 2: footer {\A 3:     &.copyright {\A 4:         width: 100%;\A 5:         height: em(40);\A 6:         color: $white;\A 7:         background: $footerBg;\A 8:         p {\A 9:             width: 100%;\A 10:             height: 100%;\A 11:             padding: 0;"; }
