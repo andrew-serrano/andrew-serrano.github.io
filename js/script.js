@@ -26,9 +26,12 @@ function onLoad() {
   });
 }
 
-//Execute even when dom has fully loaded
-document.addEventListener("DOMContentLoaded", timeout);
-var timeout = setTimeout(onLoad, 1000); // Testing purposes
+//TESTING
+// document.addEventListener("DOMContentLoaded", timeout);
+// var timeout = setTimeout(onLoad, 1000);
+
+// Execute onLoad function once DOM has finished loading
+document.addEventListener("DOMContentLoaded", onLoad);
 
 // Set height for every project depending on user screen size
 var projectView = Array.prototype.slice.call(document.querySelectorAll('.layout--setHeight')),
@@ -43,7 +46,8 @@ projectView.forEach(function (el) {
 var menuButton = document.getElementById('menu__button'),
   menuMain = document.getElementById('menu__main'),
   menuLinks = Array.prototype.slice.call(document.querySelectorAll('.menu__items')),
-  menuButtonClick, menuLinksClicked;
+  menuButtonClick, menuLinksClicked,
+  body = document.body;
 
 //Fire when button is clicked
 menuButtonClick = function (e) {
@@ -51,9 +55,11 @@ menuButtonClick = function (e) {
   e.preventDefault();
   //Display menu when clicked
   if (menuMain.classList.contains('menu--init') || this.classList.contains('menu__mobile--init')) {
+    body.classList.remove('menu--init');
     menuMain.classList.remove('menu--init');
     this.classList.remove('menu__mobile--init');
   } else {
+    body.classList.add('menu--init');    
     menuMain.classList.add('menu--init');
     this.classList.add('menu__mobile--init');
   }
