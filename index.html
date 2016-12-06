@@ -70,7 +70,7 @@
 		</header>
 		<main>
 			<section id="h-about" class="layout about">
-				<section class="layout__inner layout__inner-title layout--setHeight about__title">
+				<section class="layout__inner layout__inner-title about__title layout--setHeight">
 					<div class="layout__vertical-helper">
 						<div class="layout__heading">
 							<h2>About Me</h2>
@@ -119,41 +119,48 @@
 				<div class="layout__inner layout__inner-desc featured-proj__container">
 					<!--1-->
 					<div id="project1" class="featured-proj__view layout--setHeight">
-						<div class="featured-proj__img">
-							<!--BG IMG?-->
-						</div>
-						<div id="projectDesc1" class="featured-proj__desc">
-							<h4>Tic Tac Toe</h4>
-							<div class="featured-proj__lang">
-								<div class="featured-proj__svg">
-									<svg class="lang">
-										<use xlink:href="#html" />
-									</svg>
-								</div>
-								<div class="featured-proj__svg">
-									<svg class="lang">
-										<use xlink:href="#css" />
-									</svg>
-								</div>
-								<div class="featured-proj__svg">
-									<svg class="lang">
-										<use xlink:href="#js" />
-									</svg>
-								</div>
+						<div data-ptarget="false" class="featured-proj__overflow">
+							<div class="featured-proj__img">
+								<!--BG IMG?-->
 							</div>
-							<p>A Tic Tac Toe game seemed like a great project for me to get a better hand on experience using Javascript. This project
-								gave me a deeper understanding on the fundamentals of programming. My approach to this game was to create a 3x3 matrix
-								that would have specific coordinates that I could reference too. The user starts the game by clicking the squares
-								which initiates the computers turn. The computer then scans through all the squares knowing what's available for
-								a possible turn. Once it has fully scanned the arena it randomly guesses a coordinate and takes it's turn.</p>
-							<p>From there the game continues between the user and the computer until someone has finally won, loss, or a draw. Which
-								forces the game to restart and the user can continue to play again.</p>
-							<p>The biggest challenge of this project was to create a computer that had the knowledge of knowing when to take it's
-								turn, which square to pick, and to know when the user or computer has won. But the challenge gave me a opportunity
-								to learn a lot of features of the Javascript language. The improvements I would like to make to this project will
-								be a scoreboard, different difficulties for the computer, and possibly in the future to make a matchmaking setting.</p>
-							<a href="projects/tic_tac/index.html" class="featured-proj__button main-btn" target="_blank" rel="noopener noreferrer"><span class="lines"><span class="fill">View More</span></span>
-							</a>
+							<div class="featured-proj__front">
+								<h4>Tic Tac Toe</h4>
+								<h5>- Game</h5>
+							</div>
+						</div>
+						<div class="featured-proj__overflow">
+							<div id="projectDesc1" class="featured-proj__desc">
+								<div class="featured-proj__lang">
+									<div class="featured-proj__svg">
+										<svg class="lang">
+											<use xlink:href="#html" />
+										</svg>
+									</div>
+									<div class="featured-proj__svg">
+										<svg class="lang">
+											<use xlink:href="#css" />
+										</svg>
+									</div>
+									<div class="featured-proj__svg">
+										<svg class="lang">
+											<use xlink:href="#js" />
+										</svg>
+									</div>
+								</div>
+								<p>A Tic Tac Toe game seemed like a great project for me to get a better hand on experience using Javascript. This project
+									gave me a deeper understanding on the fundamentals of programming. My approach to this game was to create a 3x3
+									matrix that would have specific coordinates that I could reference too. The user starts the game by clicking the
+									squares which initiates the computers turn. The computer then scans through all the squares knowing what's available
+									for a possible turn. Once it has fully scanned the arena it randomly guesses a coordinate and takes it's turn.</p>
+								<p>From there the game continues between the user and the computer until someone has finally won, loss, or a draw. Which
+									forces the game to restart and the user can continue to play again.</p>
+								<p>The biggest challenge of this project was to create a computer that had the knowledge of knowing when to take it's
+									turn, which square to pick, and to know when the user or computer has won. But the challenge gave me a opportunity
+									to learn a lot of features of the Javascript language. The improvements I would like to make to this project will
+									be a scoreboard, different difficulties for the computer, and possibly in the future to make a matchmaking setting.</p>
+								<a href="projects/tic_tac/index.html" class="featured-proj__button main-btn" target="_blank" rel="noopener noreferrer"><span class="lines"><span class="fill">View More</span></span>
+								</a>
+							</div>
 						</div>
 						<!--Toggle-->
 						<a href="#project1" class="featured-proj__toggle-back">
@@ -169,38 +176,45 @@
 					</div>
 					<!--2-->
 					<div id="project2" class="featured-proj__view layout--setHeight">
-						<div class="featured-proj__img">
-							<!--BG IMG?-->
-						</div>
-						<div id="projectDesc2" class="featured-proj__desc">
-							<h4>Full Build with custom menu</h4>
-							<div class="featured-proj__lang">
-								<div class="featured-proj__svg">
-									<svg class="lang">
-										<use xlink:href="#html" />
-									</svg>
-								</div>
-								<div class="featured-proj__svg">
-									<svg class="lang">
-										<use xlink:href="#css" />
-									</svg>
-								</div>
-								<div class="featured-proj__svg">
-									<svg class="lang">
-										<use xlink:href="#js" />
-									</svg>
-								</div>
+						<div data-ptarget="false" class="featured-proj__overflow">
+							<div class="featured-proj__img">
+								<!--BG IMG?-->
 							</div>
-							<p>I was given the opportunity to create a custom hamburger menu for a new theme we we're building at my job. This project
-								definitely had it's challenges which were, how will our users interact with this menu, if our users have multiple
-								navigational items create dropdowns, how will the user interact with the dropdowns, and making sure the menu worked
-								on multiple browsers and devices.</p>
-							<p>Also making the navigation a full width menu gave me a lot of real estate to play around with layout and design. I
-								got a chance to work closely with our UI/UX lead to understand the best practices for the hamburger menu. Which were
-								hamburger menu placement, how would our client age group interact with the menu, and what modern styling could we
-								add to the menu without causing to big of a distraction from the main functionality.</p>
-							<a href="http://www.fmgwebsites.com/80a4fa45-d91a-48c7-b70b-0f8d961a04c4/" class="featured-proj__button main-btn" target="_blank"
-									rel="noopener noreferrer"><span class="lines"><span class="fill">View More</span></span></a>
+							<div class="featured-proj__front">
+								<h4>Hamburger Menu</h4>
+								<h5>- Website</h5>
+							</div>
+						</div>
+						<div class="featured-proj__overflow">
+							<div id="projectDesc2" class="featured-proj__desc">
+								<div class="featured-proj__lang">
+									<div class="featured-proj__svg">
+										<svg class="lang">
+											<use xlink:href="#html" />
+										</svg>
+									</div>
+									<div class="featured-proj__svg">
+										<svg class="lang">
+											<use xlink:href="#css" />
+										</svg>
+									</div>
+									<div class="featured-proj__svg">
+										<svg class="lang">
+											<use xlink:href="#js" />
+										</svg>
+									</div>
+								</div>
+								<p>I was given the opportunity to create a custom hamburger menu for a new theme we we're building at my job. This project
+									definitely had it's challenges which were, how will our users interact with this menu, if our users have multiple
+									navigational items create dropdowns, how will the user interact with the dropdowns, and making sure the menu worked
+									on multiple browsers and devices.</p>
+								<p>Also making the navigation a full width menu gave me a lot of real estate to play around with layout and design.
+									I got a chance to work closely with our UI/UX lead to understand the best practices for the hamburger menu. Which
+									were hamburger menu placement, how would our client age group interact with the menu, and what modern styling could
+									we add to the menu without causing to big of a distraction from the main functionality.</p>
+								<a href="http://www.fmgwebsites.com/80a4fa45-d91a-48c7-b70b-0f8d961a04c4/" class="featured-proj__button main-btn" target="_blank"
+										rel="noopener noreferrer"><span class="lines"><span class="fill">View More</span></span></a>
+							</div>
 						</div>
 						<!--Toggle-->
 						<a href="#project2" class="featured-proj__toggle-back">
@@ -216,36 +230,43 @@
 					</div>
 					<!--3-->
 					<div id="project3" class="featured-proj__view layout--setHeight">
-						<div class="featured-proj__img">
-							<!--BG IMG?-->
-						</div>
-						<div id="projectDesc3" class="featured-proj__desc">
-							<h4>Code Pen Projects</h4>
-							<div class="featured-proj__lang">
-								<div class="featured-proj__svg">
-									<svg class="lang">
-										<use xlink:href="#html" />
-									</svg>
-								</div>
-								<div class="featured-proj__svg">
-									<svg class="lang">
-										<use xlink:href="#css" />
-									</svg>
-								</div>
-								<div class="featured-proj__svg">
-									<svg class="lang">
-										<use xlink:href="#js" />
-									</svg>
-								</div>
+						<div data-ptarget="false" class="featured-proj__overflow">
+							<div class="featured-proj__img">
+								<!--BG IMG?-->
 							</div>
-							<p>This is a collection of my latest codepens containing anything from experimental technology projects, trying to create
-								the same functionality of libraries I used everyday, and fun CSS only projects.</p>
-							<p>Codepen serves a great purpose to me giving me a chance to see what other professionals in my industry are doing or
-								what they can do with the tools provided. Everytime I visit the site I find my favorite pen project and try to figure
-								out how they accomplished their final project. In result I am introduced to new libraries, frameworks, or unknown
-								properties that my language has to offer but I never knew about.</p>
-							<a href="http://codepen.io/drewskadoo/" class="featured-proj__button main-btn" target="_blank" rel="noopener noreferrer"><span class="lines"><span class="fill">View More</span></span>
-							</a>
+							<div class="featured-proj__front">
+								<h4>Codepen Projects</h4>
+								<h5>- Experimental</h5>
+							</div>
+						</div>
+						<div class="featured-proj__overflow">
+							<div id="projectDesc3" class="featured-proj__desc">
+								<div class="featured-proj__lang">
+									<div class="featured-proj__svg">
+										<svg class="lang">
+											<use xlink:href="#html" />
+										</svg>
+									</div>
+									<div class="featured-proj__svg">
+										<svg class="lang">
+											<use xlink:href="#css" />
+										</svg>
+									</div>
+									<div class="featured-proj__svg">
+										<svg class="lang">
+											<use xlink:href="#js" />
+										</svg>
+									</div>
+								</div>
+								<p>This is a collection of my latest codepens containing anything from experimental technology projects, trying to create
+									the same functionality of libraries I used everyday, and fun CSS only projects.</p>
+								<p>Codepen serves a great purpose to me giving me a chance to see what other professionals in my industry are doing
+									or what they can do with the tools provided. Everytime I visit the site I find my favorite pen project and try to
+									figure out how they accomplished their final project. In result I am introduced to new libraries, frameworks, or
+									unknown properties that my language has to offer but I never knew about.</p>
+								<a href="http://codepen.io/drewskadoo/" class="featured-proj__button main-btn" target="_blank" rel="noopener noreferrer"><span class="lines"><span class="fill">View More</span></span>
+								</a>
+							</div>
 						</div>
 						<!--Toggle-->
 						<a href="#project3" class="featured-proj__toggle-back">
@@ -262,7 +283,7 @@
 				</div>
 			</section>
 			<section id="h-contact" class="layout contact">
-				<section class="layout__inner layout__inner-title layout--setHeight contact__title">
+				<section class="layout__inner layout__inner-title contact__title layout--setHeight">
 					<div class="layout__vertical-helper">
 						<div class="layout__heading">
 							<h2>Contact Me</h2>
@@ -290,7 +311,8 @@
 		<footer class="copyright">
 			<p>Copyright &copy; 2016 Andrew Serrano</p>
 		</footer>
-		<script type="text/javascript" src="js/script.min.js"></script>		
+		<!--<script type="text/javascript" src="js/script.min.js"></script>	-->
+		<script type="text/javascript" src="js/script.js"></script>
 	</div>
 </body>
 

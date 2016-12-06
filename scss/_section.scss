@@ -63,6 +63,9 @@ main {
                     top: auto;
                     bottom: 0;
                 }
+                &:first-child {
+                    height: 100%;
+                }
             }
         }
         //Main Description inner description styles
@@ -120,7 +123,7 @@ main {
         }
         // Featured project view
         &__view {
-            min-height: $layoutHeightMobile;
+            // min-height: $layoutHeightMobile;
             max-height: 100%;
             overflow: hidden;
             position: relative;
@@ -146,15 +149,107 @@ main {
                 }
             }
         }
+        &__overflow,
+        &__desc {
+            box-shadow: 0px 2px 2px 0 rgba($black, 0.3);
+        }
+        &__overflow {
+            overflow: hidden;
+            width: 75%;
+            height: 290px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            transition: transform 0.45s 0.9s $transition;
+            &:first-child {
+                cursor: pointer;
+            }
+            // 2nd Container
+            +.featured-proj__overflow {
+                background: $white;
+                z-index: -10;
+                opacity: 0;
+                transform: translateY(-50%);
+                overflow: scroll;
+                -webkit-overflow-scrolling: touch;
+                transition: transform 0.45s $transition, opacity 0.45s 0.45s $transition;
+            }
+            //JS Class
+            &--expand {
+                transform: translateY(-50%);
+                box-shadow: 0px 0px 2px 0 rgba($black, 0.3);
+                transition: transform 0.45s $transition;
+                .featured-proj__front {
+                    transform: translateY(250px);
+                    transition: all 0.45s 0.45s $transition;
+                    h4 {
+                        transform: scale(0.75);
+                        margin: 0;
+                        transition: inherit;
+                    }
+                    h5 {
+                        opacity: 0;
+                        transition: inherit;
+                    }
+                }
+                // JS Class
+                +.featured-proj__overflow {
+                    opacity: 1;
+                    transform: translateY(50%);
+                    transition: transform 0.45s 0.85s $transition, opacity 0.45s 0.9s $transition;
+                }
+            }
+        }
         // Featured project background imgs general styles
-        &__img {
+        &__img,
+        &__front {
+            width: 100%;
             height: 100%;
-            @media screen and (min-width: 1025px) {
-                transition: transform 5s $transition;
+            position: absolute;
+            // @media screen and (min-width: 1025px) {
+            //     transition: transform 5s $transition;
+            // }
+        }
+        &__desc {
+            padding: em(20) em(20) em(35);
+        }
+        &__front {
+            color: $white;
+            background-color: #fc6aa1;
+            background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0, rgb(249, 73, 182)), color-stop(1, rgb(255, 139, 139)));
+            transform: translateY(0%);
+            transition: all 0.45s 0.45s $transition;
+            h4,
+            h5 {
+                color: currentColor;
+                transition: inherit;
+                margin: rem(20) 0 0 rem(20);
+                @media screen and (min-width: 768px) {
+                    margin: rem(50) 0 rem(15) rem(35);
+                }
+            }
+            h4 {
+                transform-origin: 90px 35px;
+                font-size: em(30);
+                transition: all 0.45s 0.45s $transition;
+                @media screen and (min-width: 768px) {
+                    font-size: em(70);
+                }
+            }
+            h5 {
+                transition: all 0.45s 0.45s $transition;
+                @media screen and (min-width: 768px) {
+                    font-size: em(40);
+                    margin-left: rem(50);
+                }
             }
         }
         // Featured project mobile toggle styling
         &__toggle {
+            display: none;
             width: 100%;
             height: em(45);
             background: rgba($tertiaryColor, 0.95);
@@ -218,28 +313,28 @@ main {
             }
         }
         // Featured project description styling
-        &__desc {
-            height: 100%;
-            background-color: rgba($tertiaryColor, 0.9);
-            color: $white;
-            transform: translateX(-100%);
-            transition: transform 0.45s $transition;
-            position: absolute;
-            top: 0;
-            left: 0;
-            padding: #{$baseline * em(70)} #{$baseline * em(70)} #{$baseline * em(200)};
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            @media screen and (max-width: 768px) and (orientation: landscape) {
-                padding: #{$baseline * em(70)} #{$baseline * em(70)} #{$baseline * em(500)};
-            }
-            @media screen and (min-width: 768px) {
-                padding: #{$baseline * em(85)};
-            }
-            h4 {
-                color: currentColor;
-            }
-        }
+        // &__desc {
+        //     height: 100%;
+        //     background-color: rgba($tertiaryColor, 0.9);
+        //     color: $white;
+        //     transform: translateX(-100%);
+        //     transition: transform 0.45s $transition;
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     padding: #{$baseline * em(70)} #{$baseline * em(70)} #{$baseline * em(200)};
+        //     overflow-y: auto;
+        //     -webkit-overflow-scrolling: touch;
+        //     @media screen and (max-width: 768px) and (orientation: landscape) {
+        //         padding: #{$baseline * em(70)} #{$baseline * em(70)} #{$baseline * em(500)};
+        //     }
+        //     @media screen and (min-width: 768px) {
+        //         padding: #{$baseline * em(85)};
+        //     }
+        //     h4 {
+        //         color: currentColor;
+        //     }
+        // }
         // Featured project html svg icons
         &__svg {
             width: em(20);

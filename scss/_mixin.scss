@@ -75,3 +75,11 @@
   }
   @return ($value / 16) * 1em;
 }
+
+@function rem($value: null) {
+  @if ($value == null) {
+    @error 'Please provide a number';
+  }
+  @return ($value / 16) * 1rem;
+}
+

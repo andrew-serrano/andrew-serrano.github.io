@@ -21,7 +21,7 @@ function onLoad() {
   document.body.classList.add('loader--init');
   mainContent.addEventListener('transitionend', function () {
     var loader = document.querySelector('.loader'),
-        menuButton = document.getElementById('menu__button');
+      menuButton = document.getElementById('menu__button');
 
     loader.style.display = "none";
     mainContent.classList.remove('main-content--load');
@@ -32,12 +32,55 @@ function onLoad() {
 //When page has fully loaded all resources/files
 window.onload = onLoad;
 
+//Project click
+var projectCard = Array.prototype.slice.call(document.querySelectorAll('div[data-ptarget="false"]')),
+  resetButton = Array.prototype.slice.call(document.querySelectorAll('.main-btn'));
+
+var projectCardClick = function (e) {
+  this.setAttribute('data-ptarget', 'true');
+
+  // Add class to container  
+  this.classList.add('featured-proj__overflow--expand');
+}
+
+var projectCardClickReset = function (e) {
+  var inc = 0,
+    parentPrevSibling = this.parentElement.parentElement.previousElementSibling,
+    that = this;
+  //Prevent from opening link
+  e.preventDefault();
+  //Binding the parent sibling element in order to use this
+  if (parentPrevSibling.hasAttribute('data-ptarget')) {
+    parentPrevSibling.setAttribute('data-ptarget', 'false');
+    parentPrevSibling.classList.remove('featured-proj__overflow--expand');
+  }
+  var parentCardTransitionOnEnd = function () {
+      inc++;
+      if (inc >= 6) {
+        inc = 0;
+        window.open(that.getAttribute('href'), '_blank');
+         parentPrevSibling.removeEventListener('transitionend', parentCardTransitionOnEnd);
+      }
+    }
+
+    // When animation is over open page
+  parentPrevSibling.addEventListener('transitionend', parentCardTransitionOnEnd);
+}
+
+// Add event listener
+projectCard.forEach(function (el, index) {
+  el.addEventListener('click', projectCardClick, false);
+  resetButton[index].addEventListener('click', projectCardClickReset, false);
+});
+
+
+
 // Set height for every project depending on user screen size
 var projectView = Array.prototype.slice.call(document.querySelectorAll('.layout--setHeight')),
   windowHeight = window.innerHeight;
 
 projectView.forEach(function (el) {
-  el.style.height = windowHeight + "px";
+  el.style.height = windowHeight + 30 + "px"; // MOBILE ONLY
 });
 //End of Set Height
 
@@ -52,7 +95,7 @@ var menuButton = document.getElementById('menu__button'),
 menuButtonClick = function (e) {
   //Prevent the default behavior of the link
   e.preventDefault();
-  
+
   //Display menu when clicked
   if (menuMain.classList.contains('menu--init') || this.classList.contains('menu__mobile--init')) {
     body.classList.remove('menu--init');

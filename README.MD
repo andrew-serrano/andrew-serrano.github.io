@@ -1,4 +1,5 @@
 #### History
+**12/1/16** - Recoded the mobile version of site to making it easier to move around and view projects. TODO: 1. adjust height of section so the COB don't look so far apart, 2. Add icons for each category of projects, 3. Adjust for tablets and desktops.
 **12/1/16** - Fixed mobile menu overflow/height were causing issues, add page to github pages and still need to take photos.
 **11/28/16** - Completed checklist, created loader, cleaned up code, added more additional comments, added copy to clipboard functionality for desktop, checked website on devices. Last thing to do is buy domain/hosting and take pictures for the website.
 **11/20/16** - Finished mobile layout and desktop. Website about 95% done next items to do is finish loader, tweak CSS or clean it up, and sames goes for JS. Do performance tests on multiple browsers. Once finished and everything is tested buy domain/hosting.
