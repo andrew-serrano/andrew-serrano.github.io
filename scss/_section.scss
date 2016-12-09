@@ -5,6 +5,11 @@ main {
     @media screen and (min-width: 1025px) {
         transition: none;
     }
+    .about {
+        &__desc {
+            min-height: 1220px;
+        }
+    }
     // General Layout styles
     .layout {
         min-height: $layoutHeightMobile;
@@ -43,7 +48,7 @@ main {
         }
         // Main Description inner children general styles
         &__inner {
-            min-height: $layoutHeightMobile;
+            height: $layoutHeightMobile;
             @media screen and (max-width: 768px) and (orientation: landscape) {
                 min-height: $layoutHeightMobileLandscape;
             }
@@ -71,7 +76,7 @@ main {
         //Main Description inner description styles
         &__inner-desc {
             float: none;
-            padding: #{$baseline * em(70)};
+            padding: #{$baseline * em(50)} #{$baseline * em(35)};
             background: $contentBG;
             @media screen and (min-width: 768px) {
                 padding: #{$baseline * em(85)};
@@ -113,19 +118,24 @@ main {
             }
         }
     }
+    @for $i from 1 through 3 {
+        #project#{$i} {
+            z-index: 40 + ($i * -10);
+        }
+    }
     // Featured project
     .featured-proj {
         position: relative;
         background: $primaryColor; //For script jump on the title
         &__container {
-            height: auto;
+            height: 1594px;
             padding: 0;
         }
         // Featured project view
         &__view {
-            // min-height: $layoutHeightMobile;
+            height: $projectViewHeight;
             max-height: 100%;
-            overflow: hidden;
+            // overflow: hidden;
             position: relative;
             transform: translateX(0px); //Makes this the relative container for my fixed position X
             // Featured project background images applying
@@ -155,7 +165,7 @@ main {
         }
         &__overflow {
             overflow: hidden;
-            width: 75%;
+            width: 82%;
             height: 290px;
             position: absolute;
             top: 0;
@@ -172,14 +182,14 @@ main {
                 background: $white;
                 z-index: -10;
                 opacity: 0;
-                transform: translateY(-50%);
-                overflow: scroll;
+                transform: translateY(-25%);
+                overflow-y: scroll;
                 -webkit-overflow-scrolling: touch;
                 transition: transform 0.45s $transition, opacity 0.45s 0.45s $transition;
             }
             //JS Class
             &--expand {
-                transform: translateY(-50%);
+                transform: translateY(-25%);
                 box-shadow: 0px 0px 2px 0 rgba($black, 0.3);
                 transition: transform 0.45s $transition;
                 .featured-proj__front {
@@ -198,7 +208,7 @@ main {
                 // JS Class
                 +.featured-proj__overflow {
                     opacity: 1;
-                    transform: translateY(50%);
+                    transform: translateY(61%);
                     transition: transform 0.45s 0.85s $transition, opacity 0.45s 0.9s $transition;
                 }
             }
@@ -214,7 +224,7 @@ main {
             // }
         }
         &__desc {
-            padding: em(20) em(20) em(35);
+            padding: em(70) em(20) em(30);
         }
         &__front {
             color: $white;

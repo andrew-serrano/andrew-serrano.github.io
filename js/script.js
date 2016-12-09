@@ -33,7 +33,7 @@ function onLoad() {
 window.onload = onLoad;
 
 //Project click
-var projectCard = Array.prototype.slice.call(document.querySelectorAll('div[data-ptarget="false"]')),
+var projectCard = Array.prototype.slice.call(document.querySelectorAll('div[data-ptarget')),
   resetButton = Array.prototype.slice.call(document.querySelectorAll('.main-btn'));
 
 var projectCardClick = function (e) {
@@ -79,9 +79,9 @@ projectCard.forEach(function (el, index) {
 var projectView = Array.prototype.slice.call(document.querySelectorAll('.layout--setHeight')),
   windowHeight = window.innerHeight;
 
-projectView.forEach(function (el) {
-  el.style.height = windowHeight + 30 + "px"; // MOBILE ONLY
-});
+// projectView.forEach(function (el) {
+//   el.style.height = windowHeight + 30 + "px"; // MOBILE ONLY
+// });
 //End of Set Height
 
 // Hamburger Menu 
