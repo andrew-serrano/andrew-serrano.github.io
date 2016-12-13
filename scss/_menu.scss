@@ -187,20 +187,15 @@ header {
                             background-color: rgba($black, 0.3);
                         }
                         span {
-                            transform: translateY(-300%) scale(1);
-                            opacity: 1;
+                            // transform: translateY(-300%) scale(1);
+                            // opacity: 1;
                         }
                     }
                     span {
-                        backface-visibility: hidden;
-                        position: absolute;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        z-index: 10;
-                        transform: translateY(100%) scale(0.8);
+                        @include transform-fix;
+                        // opacity: 0;
+                        // transform: translateY(100%) scale(0.8);
                         transition: transform .45s 100ms $transition, opacity 1.25s $transition;
-                        opacity: 0;
                     }
                 }
             }

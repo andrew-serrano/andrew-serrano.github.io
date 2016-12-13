@@ -32,15 +32,25 @@ function onLoad() {
 //When page has fully loaded all resources/files
 window.onload = onLoad;
 
-//Project click
-var projectCard = Array.prototype.slice.call(document.querySelectorAll('div[data-ptarget')),
+// Elements for projectClick and reset button
+var projectCard = Array.prototype.slice.call(document.querySelectorAll('div[data-ptarget]')),
   resetButton = Array.prototype.slice.call(document.querySelectorAll('.main-btn'));
 
+//Project click
 var projectCardClick = function (e) {
-  this.setAttribute('data-ptarget', 'true');
+  //If active element exist upon click if not null
+  var prevElement = document.querySelector('.featured-proj__overflow--expand') || null;
 
-  // Add class to container  
-  this.classList.add('featured-proj__overflow--expand');
+  //If the current target has a class of active remove class
+  if (this.classList.contains('featured-proj__overflow--expand')) {
+    this.classList.remove('featured-proj__overflow--expand');
+  } else {
+    //If the current element doesn't have the class of featured-proj__overflow--expand add class
+    this.classList.add('featured-proj__overflow--expand');
+    if (prevElement !== null) {
+      prevElement.classList.remove('featured-proj__overflow--expand');
+    }
+  }
 }
 
 var projectCardClickReset = function (e) {
@@ -51,19 +61,18 @@ var projectCardClickReset = function (e) {
   e.preventDefault();
   //Binding the parent sibling element in order to use this
   if (parentPrevSibling.hasAttribute('data-ptarget')) {
-    parentPrevSibling.setAttribute('data-ptarget', 'false');
     parentPrevSibling.classList.remove('featured-proj__overflow--expand');
   }
   var parentCardTransitionOnEnd = function () {
-      inc++;
-      if (inc >= 6) {
-        inc = 0;
-        window.open(that.getAttribute('href'), '_blank');
-         parentPrevSibling.removeEventListener('transitionend', parentCardTransitionOnEnd);
-      }
+    inc++;
+    if (inc >= 6) {
+      inc = 0;
+      window.open(that.getAttribute('href'), '_blank');
+      parentPrevSibling.removeEventListener('transitionend', parentCardTransitionOnEnd);
     }
+  }
 
-    // When animation is over open page
+  // When animation is over open page
   parentPrevSibling.addEventListener('transitionend', parentCardTransitionOnEnd);
 }
 
@@ -72,17 +81,6 @@ projectCard.forEach(function (el, index) {
   el.addEventListener('click', projectCardClick, false);
   resetButton[index].addEventListener('click', projectCardClickReset, false);
 });
-
-
-
-// Set height for every project depending on user screen size
-var projectView = Array.prototype.slice.call(document.querySelectorAll('.layout--setHeight')),
-  windowHeight = window.innerHeight;
-
-// projectView.forEach(function (el) {
-//   el.style.height = windowHeight + 30 + "px"; // MOBILE ONLY
-// });
-//End of Set Height
 
 // Hamburger Menu 
 var menuButton = document.getElementById('menu__button'),
@@ -159,10 +157,11 @@ hoverOffMenu = function () {
   When user scrolls fix elements according to their position in the viewport
   windowHeight variable is inherited from previous function
 */
-var layout = Array.prototype.slice.call(document.getElementsByClassName('layout'));
+var layout = Array.prototype.slice.call(document.getElementsByClassName('layout')),
+  windowHeight = window.innerHeight;
 
 //Set position fixed when element is in view
-var fixedSectionOnScroll = function () {
+var fixedSectionOnScroll = throttle(function () {
     layout.forEach(function (el, i) {
       var top = el.getBoundingClientRect().top,
         bottom = el.getBoundingClientRect().bottom,
@@ -193,7 +192,7 @@ var fixedSectionOnScroll = function () {
         }
       }
     });
-  }
+  }, 0);
   // End of scroll
 
 //Anchor Tags have smooth scroll 
@@ -251,6 +250,34 @@ if (window.innerWidth > 1024) {
 
 
 // External Scripts
+/*
+  Throttle function written by Remy Sharp
+  https://remysharp.com/
+*/
+function throttle(fn, threshhold, scope) {
+  threshhold || (threshhold = 15);
+  var last,
+    deferTimer;
+  return function () {
+    var context = scope || this;
+
+    var now = +new Date,
+      args = arguments;
+    if (last && now < last + threshhold) {
+      // hold on to it
+      clearTimeout(deferTimer);
+      deferTimer = setTimeout(function () {
+        last = now;
+        fn.apply(context, args);
+      }, threshhold);
+    } else {
+      last = now;
+      fn.apply(context, args);
+    }
+  };
+}
+
+
 /* 
 Smooth Scroll by Dustan Kasten
 http://iamdustan.com/smoothscroll/

@@ -34,6 +34,17 @@
   }
 }
 
+@mixin transform-fix {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0) scale(1.0, 1.0);
+  -moz-transform: translateZ(0) scale(1.0, 1.0);
+  -ms-transform: translateZ(0) scale(1.0, 1.0);
+  -o-transform: translateZ(0) scale(1.0, 1.0);
+  transform: translateZ(0) scale(1.0, 1.0);
+}
+
 //Layout Template
 @mixin col($grid: null, $float: null) {
   $gridColSize: 8.333333;

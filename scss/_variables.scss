@@ -1,13 +1,14 @@
 // Font Styles
 $headingFont: 'Proxima Nova Bold', Arial, Helvetica, sans-serif;
 $bodyFont: 'Proxima Nova Regular', Arial, Helvetica, sans-serif;
-$descriptionFont: 'Pacifico', $headingFont, cursive;
+$descriptionFont: $headingFont;
 
 
 //Global
 $baseline: 1;
 $layoutHeightMobile: 700px;
 $layoutHeightMobileLandscape: 414px;
+$layoutHeightTablet: 1024px;
 $layoutHeightDesktop: 960px;
 $projectViewHeight: 496px;
 $transition: cubic-bezier(.5, 0, .1, 1);

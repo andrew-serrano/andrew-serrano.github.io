@@ -46,6 +46,12 @@ p {
     line-height: em(28);
     font-size: em(15);
     letter-spacing: em(0.25);
+    @media screen and (min-width: 768px) {
+        font-size: em(20);
+    }
+    @media screen and (min-width: 1025px) {
+        font-size: em(16);
+    }
 }
 
 a {
@@ -82,18 +88,22 @@ img {
     width: em(200);
     height: em(50);
     margin: em(20) auto 0;
-    color: $white;
     font-family: $bodyFont;
     letter-spacing: em(1);
     overflow: hidden;
     display: block;
     position: relative;
+    font-size: em(16);
+    color: $primaryColor;
     //No hover for mobile make the button solid
     @media screen and (max-width: 1024px) {
         background: $primaryColor;
+        font-size: em(20);
+        color: $white;       
     }
     &:hover,
     &:focus {
+        color: $white;               
         &:before,
         &:after {
             transform: translateX(0px);
@@ -116,10 +126,11 @@ img {
         content: '';
         width: 100%;
         position: absolute;
-        height: em(2);
+        height: 2px;
         background: $primaryColor;
         left: 0;
         right: 0;
+        margin: auto;
         transition: transform 0.3s 0.6s $transition;
     }
     &:before {
@@ -160,20 +171,20 @@ img {
             height: 100%;
             text-align: center;
             line-height: 3;
-            &:before {
-                content: '';
-                position: absolute;
-                z-index: -10;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                width: 100%;
-                height: 100%;
-                background: $primaryColor;
-                transform: translateX(-100%);
-                transition: transform 0.3s 0s $transition;
-            }
+            // &:before {
+            //     content: '';
+            //     position: absolute;
+            //     z-index: -10;
+            //     top: 0;
+            //     left: 0;
+            //     right: 0;
+            //     bottom: 0;
+            //     width: 100%;
+            //     height: 100%;
+            //     background: $primaryColor;
+            //     transform: translateX(-100%);
+            //     transition: transform 0.3s 0s $transition;
+            // }
         }
     }
 }

@@ -35,25 +35,17 @@ main {
                 bottom: 0;
             }
         }
-        //Main Description titles colors
-        &:nth-child(even) {
-            .layout__inner-title {
-                background-color: $primaryColor;
-            }
-        }
-        &:nth-child(odd) {
-            .layout__inner-title {
-                background-color: $secondaryColor;
-            }
-        }
         // Main Description inner children general styles
         &__inner {
             height: $layoutHeightMobile;
             @media screen and (max-width: 768px) and (orientation: landscape) {
-                min-height: $layoutHeightMobileLandscape;
+                height: $layoutHeightMobileLandscape;
+            }
+            @media screen and (min-width: 768px) {
+                height: $layoutHeightTablet
             }
             @media screen and (min-width: 1025px) {
-                min-height: $layoutHeightDesktop;
+                height: $layoutHeightDesktop;
                 @include col(6, 'left');
                 left: 0;
                 margin: auto;
@@ -61,15 +53,10 @@ main {
                 &--fixed {
                     position: fixed;
                     top: 0;
-                    bottom: 0;
+                    left: 0;
                 }
                 &--static {
                     position: absolute;
-                    top: auto;
-                    bottom: 0;
-                }
-                &:first-child {
-                    height: 100%;
                 }
             }
         }
@@ -97,7 +84,7 @@ main {
         &__heading {
             text-align: center;
             width: 100%;
-            h2 {
+            h1 {
                 color: $white;
                 margin: 0;
                 margin-bottom: 1.25rem;
@@ -118,6 +105,7 @@ main {
             }
         }
     }
+    //Adjust Z-index for clickablility
     @for $i from 1 through 3 {
         #project#{$i} {
             z-index: 40 + ($i * -10);
@@ -128,16 +116,15 @@ main {
         position: relative;
         background: $primaryColor; //For script jump on the title
         &__container {
-            height: 1594px;
+            height: 1592px;
             padding: 0;
         }
         // Featured project view
         &__view {
             height: $projectViewHeight;
             max-height: 100%;
-            // overflow: hidden;
+            overflow: hidden;
             position: relative;
-            transform: translateX(0px); //Makes this the relative container for my fixed position X
             // Featured project background images applying
             @for $i from 1 through $projects {
                 &:nth-child(#{$i}) .featured-proj__img {
@@ -145,16 +132,12 @@ main {
                 }
             }
             @media screen and (min-width: 1025px) {
-                min-height: $layoutHeightDesktop;
+                // min-height: $layoutHeightDesktop;
                 // Featured project description hover
                 &:hover,
                 &:focus {
-                    .featured-proj__img {
-                        transition: transform 25s linear;
-                        transform: scale(1.25);
-                    }
                     .featured-proj__desc {
-                        transform: translateX(0px);
+                        transform: translate(0%, 0%);
                     }
                 }
             }
@@ -162,6 +145,7 @@ main {
         &__overflow,
         &__desc {
             box-shadow: 0px 2px 2px 0 rgba($black, 0.3);
+            @include transform-fix;
         }
         &__overflow {
             overflow: hidden;
@@ -174,6 +158,8 @@ main {
             bottom: 0;
             margin: auto;
             transition: transform 0.45s 0.9s $transition;
+            outline: 0;
+            @include transform-fix;
             &:first-child {
                 cursor: pointer;
             }
@@ -182,33 +168,38 @@ main {
                 background: $white;
                 z-index: -10;
                 opacity: 0;
-                transform: translateY(-25%);
+                transform: translate(0%, -25%);
                 overflow-y: scroll;
                 -webkit-overflow-scrolling: touch;
                 transition: transform 0.45s $transition, opacity 0.45s 0.45s $transition;
             }
             //JS Class
             &--expand {
-                transform: translateY(-25%);
+                transform: translate(0%, -25%);
                 box-shadow: 0px 0px 2px 0 rgba($black, 0.3);
                 transition: transform 0.45s $transition;
                 .featured-proj__front {
-                    transform: translateY(250px);
+                    transform: translate(0%, 250px);
                     transition: all 0.45s 0.45s $transition;
-                    h4 {
+                    h2,
+                    h5 {
+                        transition: inherit;
+                    }
+                    h2 {
                         transform: scale(0.75);
                         margin: 0;
-                        transition: inherit;
+                        @media screen and (min-width: 768px) {
+                            transform: scale(0.6);
+                        }
                     }
                     h5 {
                         opacity: 0;
-                        transition: inherit;
                     }
                 }
                 // JS Class
                 +.featured-proj__overflow {
                     opacity: 1;
-                    transform: translateY(61%);
+                    transform: translate(0%, 61%);
                     transition: transform 0.45s 0.85s $transition, opacity 0.45s 0.9s $transition;
                 }
             }
@@ -219,9 +210,7 @@ main {
             width: 100%;
             height: 100%;
             position: absolute;
-            // @media screen and (min-width: 1025px) {
-            //     transition: transform 5s $transition;
-            // }
+            @include transform-fix;
         }
         &__desc {
             padding: em(70) em(20) em(30);
@@ -230,9 +219,10 @@ main {
             color: $white;
             background-color: #fc6aa1;
             background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0, rgb(249, 73, 182)), color-stop(1, rgb(255, 139, 139)));
-            transform: translateY(0%);
+            transform: translate(0%, 0%);
             transition: all 0.45s 0.45s $transition;
-            h4,
+            //Transition all performance issue?
+            h2,
             h5 {
                 color: currentColor;
                 transition: inherit;
@@ -241,111 +231,38 @@ main {
                     margin: rem(50) 0 rem(15) rem(35);
                 }
             }
-            h4 {
+            h2 {
                 transform-origin: 90px 35px;
                 font-size: em(30);
-                transition: all 0.45s 0.45s $transition;
                 @media screen and (min-width: 768px) {
-                    font-size: em(70);
+                    font-size: em(50);
+                    transform-origin: 90px 10px;
                 }
             }
             h5 {
-                transition: all 0.45s 0.45s $transition;
                 @media screen and (min-width: 768px) {
-                    font-size: em(40);
+                    font-size: em(30);
                     margin-left: rem(50);
                 }
             }
         }
-        // Featured project mobile toggle styling
-        &__toggle {
-            display: none;
-            width: 100%;
-            height: em(45);
-            background: rgba($tertiaryColor, 0.95);
+        &__icon {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            transform: translateY(0px);
-            transition: transform 0.3s 0.45s $transition;
-            svg {
-                width: em(25);
-                transform: rotate(90deg);
-                position: absolute;
-                top: 0;
-                right: 0;
+            bottom: 10px;
+            right: 10px;
+            width: 100px;
+            height: 100px;
+            fill: rgba($white, 0.85);
+            &-2,
+            &-3 {
                 bottom: 0;
-                left: 0;
-                margin: auto;
-                fill: $white;
             }
-            @media screen and (min-width: 1025px) {
-                display: none;
+            &-3 {
+                height: 80px;
+                right: 0;
             }
         }
-        //Featured project Mobile Description View
-        #project1,
-        #project2,
-        #project3 {
-            &:target~.featured-proj__toggle-back {
-                opacity: 0;
-                transition: opacity 2s $transition;
-            }
-        }
-        //Featured project Mobile Description
-        #projectDesc1,
-        #projectDesc2,
-        #projectDesc3 {
-            &:target {
-                transform: translateX(0px);
-                transition: transform 0.45s 0.3s $transition;
-                ~.featured-proj__toggle-back {
-                    opacity: 1;
-                    transition: opacity 2s $transition;
-                }
-                ~.featured-proj__toggle-forward {
-                    transform: translateY(100%);
-                    transition: transform 0.3s $transition;
-                }
-            }
-        }
-        //Featured project Mobile Description View "X" or close styling
-        &__toggle-back {
-            position: fixed;
-            top: em(25);
-            right: em(25);
-            opacity: 0;
-            svg {
-                width: em(20);
-                height: em(20);
-                fill: $white;
-            }
-        }
-        // Featured project description styling
-        // &__desc {
-        //     height: 100%;
-        //     background-color: rgba($tertiaryColor, 0.9);
-        //     color: $white;
-        //     transform: translateX(-100%);
-        //     transition: transform 0.45s $transition;
-        //     position: absolute;
-        //     top: 0;
-        //     left: 0;
-        //     padding: #{$baseline * em(70)} #{$baseline * em(70)} #{$baseline * em(200)};
-        //     overflow-y: auto;
-        //     -webkit-overflow-scrolling: touch;
-        //     @media screen and (max-width: 768px) and (orientation: landscape) {
-        //         padding: #{$baseline * em(70)} #{$baseline * em(70)} #{$baseline * em(500)};
-        //     }
-        //     @media screen and (min-width: 768px) {
-        //         padding: #{$baseline * em(85)};
-        //     }
-        //     h4 {
-        //         color: currentColor;
-        //     }
-        // }
-        // Featured project html svg icons
+        // SVG Icons
         &__svg {
             width: em(20);
             display: inline-block;
@@ -355,6 +272,27 @@ main {
                 fill: $svgBg;
                 height: em(20);
             }
+        }
+    }
+    // About Section
+    .about {
+        background-color: $primaryColor;
+        .layout__inner--static {
+            top: 350px;
+        }
+    }
+    // Work Section
+    .work {
+        background-color: $secondaryColor;
+        .layout__inner--static {
+            top: 720px;
+        }
+    }
+    // Contact Section
+    .contact {
+        background-color: $primaryColor;
+        .layout__inner--static {
+            top: 90px;
         }
     }
 }
