@@ -12,6 +12,11 @@ $layoutHeightTablet: 1024px;
 $layoutHeightDesktop: 960px;
 $projectViewHeight: 496px;
 $transition: cubic-bezier(.5, 0, .1, 1);
+
+//Menu Text
+$menuTextList: "About", "Work", "Contact";
+$menuImgList: 'https://deaenij3kiw8r.cloudfront.net/system/users/avatars/141380/original/production-b3612f96cc66fee631be82853dd2c316-man_bartlett_bw.jpg?1369799811','../images/project.jpg', 'https://deaenij3kiw8r.cloudfront.net/system/users/avatars/141380/original/production-b3612f96cc66fee631be82853dd2c316-man_bartlett_bw.jpg?1369799811';
+
 // Projects
 $projects: 3;            
 $projectImg: '../images/project_tic_tac_toe.jpg', '../images/project_menu.jpg', '../images/project_codepen.jpg';

@@ -1,4 +1,5 @@
 #### History
+**12/19/16** - Adjusted project views and fixed project view View more hover. Added new functionality to main hovers and need to add more contact information as well do something with the footer. Also need to take pictures for main nav.
 **12/1/16** - Project view redo through mobile & desktop. Create new hovers for main navigation on Desktop. More information for contact section, animation for the footer?
 **12/1/16** - Recoded the mobile version of site to making it easier to move around and view projects. TODO: 1. adjust height of section so the COB don't look so far apart, 2. Add icons for each category of projects, 3. Adjust for tablets and desktops.
 **12/1/16** - Fixed mobile menu overflow/height were causing issues, add page to github pages and still need to take photos.

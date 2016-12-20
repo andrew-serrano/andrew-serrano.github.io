@@ -81,13 +81,14 @@ projectCard.forEach(function (el, index) {
   el.addEventListener('click', projectCardClick, false);
   resetButton[index].addEventListener('click', projectCardClickReset, false);
 });
+//End of Project Card
 
 // Hamburger Menu 
 var menuButton = document.getElementById('menu__button'),
   menuMain = document.getElementById('menu__main'),
   menuLinks = Array.prototype.slice.call(document.querySelectorAll('.menu__items')),
-  menuButtonClick, menuLinksClicked,
-  body = document.body;
+  body = document.body,
+  menuButtonClick, menuLinksClicked;
 
 //Fire when button is clicked
 menuButtonClick = function (e) {
@@ -108,50 +109,65 @@ menuButtonClick = function (e) {
 
 //When menuLinks are clicked remove the init class
 menuLinksClicked = function () {
-  if (menuMain.classList.contains('menu--init') || menuButton.classList.contains('menu__mobile--init')) {
-    menuMain.classList.remove('menu--init');
-    menuButton.classList.remove('menu__mobile--init');
-  } else {
-    menuMain.classList.add('menu--init');
-    menuButton.classList.add('menu__mobile--init');
+    if (menuMain.classList.contains('menu--init') || menuButton.classList.contains('menu__mobile--init')) {
+      menuMain.classList.remove('menu--init');
+      menuButton.classList.remove('menu__mobile--init');
+    } else {
+      menuMain.classList.add('menu--init');
+      menuButton.classList.add('menu__mobile--init');
+    }
   }
-}
+  //End of Hamburger Menu imrpove structure?
 
-//Add click eventlistern to elements
-menuButton.addEventListener('click', menuButtonClick, false);
-menuLinks.forEach(function (el) {
-  el.addEventListener('click', menuLinksClicked, false);
-});
-//End of Hamburger Menu imrpove structure?
+//Wrap nav in spans to animate
+function wrapMenuLinks(el, i) {
+  var thisChild = el.children[0],
+    thisChildText = thisChild.innerText,
+    span;
+
+  //Add event listeners for hover effects
+  el.addEventListener('mouseover', hoverMenu);
+  el.addEventListener('mouseout', hoverOffMenu);
+
+  //Iterate each items text and append span then append the text
+  for (var i = 0; i < thisChildText.length; i++) {
+    span = document.createElement('span');
+    span.classList.add('menu__items--show');
+    thisChild.appendChild(span);
+    span.append(thisChildText[i]);
+  }
+
+  //Remove the original text node
+  thisChild.childNodes[0].remove();
+}
+// End of wrap
 
 // Menu hover - IMPROVE?
-var menuItems = Array.prototype.slice.call(document.querySelectorAll('.menu__items')),
-  hoverMenu,
-  hoverOffMenu;
+var menuItems = Array.prototype.slice.call(document.querySelectorAll('.menu__items'));
 
-hoverMenu = function (e) {
-    if (this.classList.contains('menu__items-1')) {
-      this.style.transform = "scale(1.2) translateX(2.1vw)";
-      this.nextElementSibling.style.transform = "scale(1) translateX(5.5vw)";
-      this.nextElementSibling.nextElementSibling.style.transform = "scale(1) translateX(5.5vw)";
-    } else if (this.classList.contains('menu__items-2')) {
-      this.style.transform = "scale(1.2) translateX(0)";
-      this.previousElementSibling.style.transform = "scale(1) translateX(-3vw)";
-      this.nextElementSibling.style.transform = "scale(1) translateX(3vw)";
-    } else if (this.classList.contains('menu__items-3')) {
-      this.style.transform = "scale(1.2) translateX(-2.1vw)";
-      this.previousElementSibling.style.transform = "scale(1) translateX(-5.5vw)";
-      this.previousElementSibling.previousElementSibling.style.transform = "scale(1) translateX(-5.5vw)";
-    }
+function hoverMenu(e) {
+  if (this.classList.contains('menu__items-1')) {
+    this.style.transform = "scale(1.2) translateX(2.1vw)";
+    this.nextElementSibling.style.transform = "scale(1) translateX(5.5vw)";
+    this.nextElementSibling.nextElementSibling.style.transform = "scale(1) translateX(5.5vw)";
+  } else if (this.classList.contains('menu__items-2')) {
+    this.style.transform = "scale(1.2) translateX(0)";
+    this.previousElementSibling.style.transform = "scale(1) translateX(-3vw)";
+    this.nextElementSibling.style.transform = "scale(1) translateX(3vw)";
+  } else if (this.classList.contains('menu__items-3')) {
+    this.style.transform = "scale(1.2) translateX(-2.1vw)";
+    this.previousElementSibling.style.transform = "scale(1) translateX(-5.5vw)";
+    this.previousElementSibling.previousElementSibling.style.transform = "scale(1) translateX(-5.5vw)";
+  }
 
-  }
-  // When you mouseout / hover off
-hoverOffMenu = function () {
-    menuItems.forEach(function (el) {
-      el.style.transform = "scale(1) translateX(0)";
-    });
-  }
-  // End of Menu hover
+}
+// When you mouseout / hover off
+function hoverOffMenu() {
+  menuItems.forEach(function (el) {
+    el.style.transform = "scale(1) translateX(0)";
+  });
+}
+// End of Menu hover
 
 /*
   When user scrolls fix elements according to their position in the viewport
@@ -162,38 +178,38 @@ var layout = Array.prototype.slice.call(document.getElementsByClassName('layout'
 
 //Set position fixed when element is in view
 var fixedSectionOnScroll = throttle(function () {
-    layout.forEach(function (el, i) {
-      var top = el.getBoundingClientRect().top,
-        bottom = el.getBoundingClientRect().bottom,
-        title = el.children[0];
+  layout.forEach(function (el, i) {
+    var top = el.getBoundingClientRect().top,
+      bottom = el.getBoundingClientRect().bottom,
+      title = el.children[0];
 
-      //Above El
-      if (top >= 0) {
-        if (title.classList.contains('layout__inner--fixed')) {
-          title.classList.remove('layout__inner--fixed');
-        }
+    //Above El
+    if (top >= 0) {
+      if (title.classList.contains('layout__inner--fixed')) {
+        title.classList.remove('layout__inner--fixed');
       }
-      //If you're on the element
-      else if ((top <= 0 && bottom >= windowHeight)) {
-        if (!title.classList.contains('layout__inner--fixed')) {
-          title.classList.add('layout__inner--fixed');
-        }
-        if (title.classList.contains('layout__inner--static')) {
-          title.classList.remove('layout__inner--static');
-        }
+    }
+    //If you're on the element
+    else if ((top <= 0 && bottom >= windowHeight)) {
+      if (!title.classList.contains('layout__inner--fixed')) {
+        title.classList.add('layout__inner--fixed');
       }
-      // Below el
-      else {
-        if (!title.classList.contains('layout__inner--static')) {
-          title.classList.add('layout__inner--static');
-        }
-        if (title.classList.contains('layout__inner--fixed')) {
-          title.classList.remove('layout__inner--fixed');
-        }
+      if (title.classList.contains('layout__inner--static')) {
+        title.classList.remove('layout__inner--static');
       }
-    });
-  }, 0);
-  // End of scroll
+    }
+    // Below el
+    else {
+      if (!title.classList.contains('layout__inner--static')) {
+        title.classList.add('layout__inner--static');
+      }
+      if (title.classList.contains('layout__inner--fixed')) {
+        title.classList.remove('layout__inner--fixed');
+      }
+    }
+  });
+}, 0);
+// End of scroll
 
 //Anchor Tags have smooth scroll 
 var anchorTags = Array.prototype.slice.call(document.querySelectorAll(('a[href*="#"]:not([href="#"])')));
@@ -241,10 +257,14 @@ copyEl.addEventListener('click', function (e) {
 
 // JS Events that have to run for mobile/desktop
 if (window.innerWidth > 1024) {
+  // Add scroll to window
   window.addEventListener('scroll', fixedSectionOnScroll);
-  menuItems.forEach(function (el) {
-    el.addEventListener('mouseover', hoverMenu);
-    el.addEventListener('mouseout', hoverOffMenu);
+  menuLinks.forEach(wrapMenuLinks);
+} else {
+  //Add click eventlistern to elements
+  menuButton.addEventListener('click', menuButtonClick, false);
+  menuLinks.forEach(function (el) {
+    el.addEventListener('click', menuLinksClicked, false);
   });
 }
 

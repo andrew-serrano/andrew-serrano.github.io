@@ -138,14 +138,19 @@ header {
                 transition: transform .45s 0.1s $transition;
                 will-change: transform, opacity;
                 list-style-type: none;
-                &:nth-child(1) {
-                    background: url('https://deaenij3kiw8r.cloudfront.net/system/users/avatars/141380/original/production-b3612f96cc66fee631be82853dd2c316-man_bartlett_bw.jpg?1369799811') 50% 50% / cover no-repeat;
-                }
-                &:nth-child(2) {
-                    background: url('../images/project.jpg') 50% 50% / cover no-repeat;
-                }
-                &:nth-child(3) {
-                    background: url('https://deaenij3kiw8r.cloudfront.net/system/users/avatars/141380/original/production-b3612f96cc66fee631be82853dd2c316-man_bartlett_bw.jpg?1369799811') 50% 50% / cover no-repeat;
+                //Add imgs and span hover delay
+                @for $i from 1 through length($menuTextList) {
+                    &:nth-child(#{$i}) {
+                        background: url(nth($menuImgList, $i)) 50% 50% / cover no-repeat;
+                        a span {
+                            @for $j from 1 through str-length(nth($menuTextList,
+                            $i)) {
+                                &:nth-of-type(#{$j}) {
+                                    transition-delay: #{50 * $j}ms;
+                                }
+                            }
+                        }
+                    }
                 }
                 a {
                     position: relative;
@@ -166,12 +171,13 @@ header {
                         font-family: $descriptionFont;
                         text-transform: capitalize;
                     }
+                    // Hover overlay
                     &:before {
                         content: '';
                         width: 100%;
                         height: 100%;
                         position: absolute;
-                        z-index: 10;
+                        z-index: 0;
                         top: 0;
                         left: 0;
                         right: 0;
@@ -184,18 +190,21 @@ header {
                     &:focus {
                         &:before {
                             opacity: 1;
-                            background-color: rgba($black, 0.3);
+                            background-color: rgba($black, 0.5);
                         }
                         span {
-                            // transform: translateY(-300%) scale(1);
-                            // opacity: 1;
+                            transform: translate(0%, 0%);
+                            opacity: 1;
                         }
                     }
                     span {
                         @include transform-fix;
-                        // opacity: 0;
-                        // transform: translateY(100%) scale(0.8);
-                        transition: transform .45s 100ms $transition, opacity 1.25s $transition;
+                        display: inline-block;
+                        opacity: 0;
+                        transform: translate(0%, -50%);
+                        transition-property: all;
+                        transition-duration: 0.2s;
+                        transition-timing-function: $transition;
                     }
                 }
             }

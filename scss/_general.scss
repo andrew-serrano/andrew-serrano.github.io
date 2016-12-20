@@ -42,7 +42,7 @@ a {
 }
 
 p {
-    padding: #{$baseline * em(24)} 0;
+    margin: #{$baseline * em(24)} 0;
     line-height: em(28);
     font-size: em(15);
     letter-spacing: em(0.25);
@@ -87,7 +87,7 @@ img {
 .main-btn {
     width: em(200);
     height: em(50);
-    margin: em(20) auto 0;
+    margin: em(35) auto 0;
     font-family: $bodyFont;
     letter-spacing: em(1);
     overflow: hidden;
@@ -95,15 +95,18 @@ img {
     position: relative;
     font-size: em(16);
     color: $primaryColor;
+    transition: color 0.3s 0s $transition;
+    @include transform-fix;
     //No hover for mobile make the button solid
     @media screen and (max-width: 1024px) {
         background: $primaryColor;
         font-size: em(20);
-        color: $white;       
+        color: $white;
     }
     &:hover,
     &:focus {
-        color: $white;               
+        color: $white;
+        transition: color 0.3s 0.65s $transition;                 
         &:before,
         &:after {
             transform: translateX(0px);
@@ -113,11 +116,11 @@ img {
             &:before,
             &:after {
                 transform: translateY(0px);
-                transition: transform 0.3s 0.3s $transition;
+                transition: transform 0.3s 0.35s $transition;
             }
             .fill:before {
                 transform: translateX(0px);
-                transition: transform 0.3s 0.6s $transition;
+                transition: transform 0.3s 0.65s $transition;
             }
         }
     }
@@ -131,7 +134,7 @@ img {
         left: 0;
         right: 0;
         margin: auto;
-        transition: transform 0.3s 0.6s $transition;
+        transition: transform 0.3s 0.65s $transition;
     }
     &:before {
         top: 0;
@@ -153,11 +156,11 @@ img {
             position: absolute;
             height: 100%;
             background: $primaryColor;
-            transition: transform 0.3s 0.3s $transition;
+            transition: transform 0.3s 0.35s $transition;
         }
         &:before {
             top: 0;
-            left: 1px;
+            left: 0;
             transform: translateY(-100%);
         }
         &:after {
@@ -171,20 +174,20 @@ img {
             height: 100%;
             text-align: center;
             line-height: 3;
-            // &:before {
-            //     content: '';
-            //     position: absolute;
-            //     z-index: -10;
-            //     top: 0;
-            //     left: 0;
-            //     right: 0;
-            //     bottom: 0;
-            //     width: 100%;
-            //     height: 100%;
-            //     background: $primaryColor;
-            //     transform: translateX(-100%);
-            //     transition: transform 0.3s 0s $transition;
-            // }
+            &:before {
+                content: '';
+                position: absolute;
+                z-index: -10;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+                background: $primaryColor;
+                transform: translateX(-100%);
+                transition: transform 0.3s 0s $transition;
+            }
         }
     }
 }

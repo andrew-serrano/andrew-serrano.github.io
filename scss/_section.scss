@@ -214,11 +214,14 @@ main {
         }
         &__desc {
             padding: em(70) em(20) em(30);
+            @media screen and (min-width: 1025px) {
+                padding: em(70) em(20) em(100);
+            }
         }
         &__front {
             color: $white;
-            background-color: #fc6aa1;
-            background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0, rgb(249, 73, 182)), color-stop(1, rgb(255, 139, 139)));
+            background-color: $primaryColor;
+            background-image: -webkit-gradient(linear, 0% 0%, 100% 100%, color-stop(0, $primaryColor), color-stop(1, $tertiaryColor));
             transform: translate(0%, 0%);
             transition: all 0.45s 0.45s $transition;
             //Transition all performance issue?
