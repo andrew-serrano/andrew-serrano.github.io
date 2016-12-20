@@ -281,21 +281,21 @@ main {
     .about {
         background-color: $primaryColor;
         .layout__inner--static {
-            top: 350px;
+            top: 250px;
         }
     }
     // Work Section
     .work {
         background-color: $secondaryColor;
         .layout__inner--static {
-            top: 720px;
+            top: 620px;
         }
     }
     // Contact Section
     .contact {
         background-color: $primaryColor;
         .layout__inner--static {
-            top: 90px;
+            top: 0;
         }
     }
 }
