@@ -1,6 +1,21 @@
 "use strict";
 
-//Before resources are unloaded make sure user is on top of the page
+/*
+  Table of Contents: 
+  #1: Loader Script,
+  #2: Project Card Click,
+  #3: Hamburger Menu Script,
+  #4: Wrap main nav text in spans,
+  #5: Main nav menu hover script,
+  #6: Set height to section elements,
+  #7: Scroll function to setFixed or setStatic on section elements,
+  #8: Anchor tag smooth scroll script,
+  #9: Copy email to clipboard function,
+  #10: Media queries for events and certain functions,
+  #11: External scripts
+*/
+
+// #1: Before resources are unloaded make sure user is on top of the page
 window.addEventListener("beforeunload", function () {
   window.scrollTo(0, 0);
 });
@@ -31,8 +46,9 @@ function onLoad() {
 
 //When page has fully loaded all resources/files
 window.onload = onLoad;
+// #1: End of Loader Script
 
-// Elements for projectClick and reset button
+// #2: Elements for projectClick and reset button
 var projectCard = Array.prototype.slice.call(document.querySelectorAll('div[data-ptarget]')),
   resetButton = Array.prototype.slice.call(document.querySelectorAll('.main-btn'));
 
@@ -57,23 +73,26 @@ var projectCardClickReset = function (e) {
   var inc = 0,
     parentPrevSibling = this.parentElement.parentElement.previousElementSibling,
     that = this;
+
   //Prevent from opening link
-  e.preventDefault();
+  // e.preventDefault();
+
   //Binding the parent sibling element in order to use this
   if (parentPrevSibling.hasAttribute('data-ptarget')) {
     parentPrevSibling.classList.remove('featured-proj__overflow--expand');
   }
-  var parentCardTransitionOnEnd = function () {
-    inc++;
-    if (inc >= 6) {
-      inc = 0;
-      window.open(that.getAttribute('href'), '_blank');
-      parentPrevSibling.removeEventListener('transitionend', parentCardTransitionOnEnd);
-    }
-  }
 
-  // When animation is over open page
-  parentPrevSibling.addEventListener('transitionend', parentCardTransitionOnEnd);
+  // var parentCardTransitionOnEnd = function (e) {
+  //   inc++;
+  //   if (inc >= 5) {
+  //     inc = 0;
+  //     window.open(that.getAttribute('href'), '_blank');
+  //     parentPrevSibling.removeEventListener('transitionend', parentCardTransitionOnEnd);
+  //   }
+  // }
+
+  // // When animation is over open page
+  // parentPrevSibling.addEventListener('transitionend', parentCardTransitionOnEnd);
 }
 
 // Add event listener
@@ -81,9 +100,9 @@ projectCard.forEach(function (el, index) {
   el.addEventListener('click', projectCardClick, false);
   resetButton[index].addEventListener('click', projectCardClickReset, false);
 });
-//End of Project Card
+// #2: End of Project Card
 
-// Hamburger Menu 
+// #3: Hamburger Menu 
 var menuButton = document.getElementById('menu__button'),
   menuMain = document.getElementById('menu__main'),
   menuLinks = Array.prototype.slice.call(document.querySelectorAll('.menu__items')),
@@ -117,9 +136,9 @@ menuLinksClicked = function () {
       menuButton.classList.add('menu__mobile--init');
     }
   }
-  //End of Hamburger Menu imrpove structure?
+  // #3: End of Hamburger Menu improve structure?
 
-//Wrap nav in spans to animate
+// #4: Wrap nav in spans to animate
 function wrapMenuLinks(el, i) {
   var thisChild = el.children[0],
     thisChildText = thisChild.innerText,
@@ -140,9 +159,9 @@ function wrapMenuLinks(el, i) {
   //Remove the original text node
   thisChild.childNodes[0].remove();
 }
-// End of wrap
+// #4: End of wrapping nav
 
-// Menu hover - IMPROVE?
+// #5: Menu hover - IMPROVE?
 var menuItems = Array.prototype.slice.call(document.querySelectorAll('.menu__items'));
 
 function hoverMenu(e) {
@@ -167,21 +186,44 @@ function hoverOffMenu() {
     el.style.transform = "scale(1) translateX(0)";
   });
 }
-// End of Menu hover
+// #5: End of Menu hover
 
-/*
+// #6: Set Height for sections and retrieve top offset
+var setHeightEl = Array.prototype.slice.call(document.querySelectorAll('.layout__inner-title--setHeight')),
+  parentHeight, sectionOffsetTop;
+
+// Function for setting the height and retrieving the offset
+function setHeightAndOffset(el, i) {
+  var windowHeight = window.innerHeight;
+
+  // Retrieve the parent element's height
+  parentHeight = el.parentElement.offsetHeight;
+
+  // Calculate offset for top position
+  sectionOffsetTop = parentHeight - windowHeight;
+
+  // Set attribute values for debugging 
+  el.parentElement.setAttribute("data-height", parentHeight);
+  el.setAttribute("data-top", sectionOffsetTop);
+
+  // Set height to element
+  el.style.height = windowHeight + "px";
+}
+// #6: End of Set Height
+
+/* #7: 
   When user scrolls fix elements according to their position in the viewport
   windowHeight variable is inherited from previous function
 */
-var layout = Array.prototype.slice.call(document.getElementsByClassName('layout')),
-  windowHeight = window.innerHeight;
+var layout = Array.prototype.slice.call(document.getElementsByClassName('layout'));
 
 //Set position fixed when element is in view
 var fixedSectionOnScroll = throttle(function () {
   layout.forEach(function (el, i) {
     var top = el.getBoundingClientRect().top,
       bottom = el.getBoundingClientRect().bottom,
-      title = el.children[0];
+      title = el.children[0],
+      titleOffsetTop = title.getAttribute('data-top');
 
     //Above El
     if (top >= 0) {
@@ -190,18 +232,20 @@ var fixedSectionOnScroll = throttle(function () {
       }
     }
     //If you're on the element
-    else if ((top <= 0 && bottom >= windowHeight)) {
+    else if ((top <= 0 && bottom >= window.innerHeight)) {
       if (!title.classList.contains('layout__inner--fixed')) {
         title.classList.add('layout__inner--fixed');
       }
       if (title.classList.contains('layout__inner--static')) {
         title.classList.remove('layout__inner--static');
+        title.style.top = "0px"; // Reset top position
       }
     }
     // Below el
     else {
       if (!title.classList.contains('layout__inner--static')) {
         title.classList.add('layout__inner--static');
+        title.style.top = titleOffsetTop + "px";
       }
       if (title.classList.contains('layout__inner--fixed')) {
         title.classList.remove('layout__inner--fixed');
@@ -209,9 +253,9 @@ var fixedSectionOnScroll = throttle(function () {
     }
   });
 }, 0);
-// End of scroll
+// #7: End of scroll
 
-//Anchor Tags have smooth scroll 
+// #8: Anchor Tags have smooth scroll 
 var anchorTags = Array.prototype.slice.call(document.querySelectorAll(('a[href*="#"]:not([href="#"])')));
 
 anchorTags.forEach(function (el) {
@@ -221,10 +265,12 @@ anchorTags.forEach(function (el) {
     });
   });
 });
-// End of anchor tag smooth scroll
+// #8: End of anchor tag smooth scroll
 
-// Copy Email to clipboard
+// #9: Copy Email to clipboard
 var copyEl = document.getElementById('copy');
+
+// Add click event listener to copy element
 copyEl.addEventListener('click', function (e) {
   e.preventDefault();
   var tmpEl = document.createElement('textarea'),
@@ -253,29 +299,40 @@ copyEl.addEventListener('click', function (e) {
   tmpEl.remove();
 
 });
-// End of Copy email to clipboard
+// #9: End of Copy email to clipboard
 
-// JS Events that have to run for mobile/desktop
+// #10: Media queries for events that have to run for mobile/desktop and other functions
 if (window.innerWidth > 1024) {
   // Add scroll to window
-  window.addEventListener('scroll', fixedSectionOnScroll);
+  window.addEventListener('scroll', fixedSectionOnScroll, false);
+
+  // Wrap menu links in spans
   menuLinks.forEach(wrapMenuLinks);
+
+  // Iterate over multiple elements
+  setHeightEl.forEach(setHeightAndOffset);
+
+  // Add resize window event to for setHeight
+  window.addEventListener('resize', function () {
+    setHeightEl.forEach(setHeightAndOffset);
+  }, false)
 } else {
-  //Add click eventlistern to elements
+  // Add click eventlistern to elements
   menuButton.addEventListener('click', menuButtonClick, false);
+
   menuLinks.forEach(function (el) {
     el.addEventListener('click', menuLinksClicked, false);
   });
 }
+// #10: End of media queries
 
-
-// External Scripts
+// #11: External Scripts
 /*
   Throttle function written by Remy Sharp
   https://remysharp.com/
 */
 function throttle(fn, threshhold, scope) {
-  threshhold || (threshhold = 15);
+  threshhold || (threshhold = 10);
   var last,
     deferTimer;
   return function () {
@@ -380,3 +437,5 @@ http://iamdustan.com/smoothscroll/
     polyfill: d
   } : d()
 }(window, document);
+
+// #11: End of external scripts

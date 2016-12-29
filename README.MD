@@ -1,4 +1,5 @@
 #### History
+**12/28/16** - Created a new script to set the height and calculate the offsetTop of the title section depending on the size of your browser window. Need to make sure it works on multiple screens. Added table of contents to script to make it easier to navigate. Adjusted CSS/SCSS for the projects on mobile/desktop.
 **12/19/16** - Adjusted project views and fixed project view View more hover. Added new functionality to main hovers and need to add more contact information as well do something with the footer. Also need to take pictures for main nav.
 **12/1/16** - Project view redo through mobile & desktop. Create new hovers for main navigation on Desktop. More information for contact section, animation for the footer?
 **12/1/16** - Recoded the mobile version of site to making it easier to move around and view projects. TODO: 1. adjust height of section so the COB don't look so far apart, 2. Add icons for each category of projects, 3. Adjust for tablets and desktops.

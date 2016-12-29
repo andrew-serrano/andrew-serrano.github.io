@@ -5,11 +5,6 @@ main {
     @media screen and (min-width: 1025px) {
         transition: none;
     }
-    .about {
-        &__desc {
-            min-height: 1220px;
-        }
-    }
     // General Layout styles
     .layout {
         min-height: $layoutHeightMobile;
@@ -69,7 +64,6 @@ main {
                 padding: #{$baseline * em(85)};
             }
             @media screen and (min-width: 1025px) {
-                float: right;
                 @include col(6, 'right');
             }
         }
@@ -106,9 +100,13 @@ main {
         }
     }
     //Adjust Z-index for clickablility
-    @for $i from 1 through 3 {
+    @for $i from 1 through $projects {
         #project#{$i} {
             z-index: 40 + ($i * -10);
+            // Featured project background images applying            
+            .featured-proj__img {
+                background: url(nth($projectImg, $i)) 50% 0%/cover no-repeat;
+            }
         }
     }
     // Featured project
@@ -116,7 +114,7 @@ main {
         position: relative;
         background: $primaryColor; //For script jump on the title
         &__container {
-            height: 1592px;
+            height: em(2100);
             padding: 0;
         }
         // Featured project view
@@ -125,12 +123,6 @@ main {
             max-height: 100%;
             overflow: hidden;
             position: relative;
-            // Featured project background images applying
-            @for $i from 1 through $projects {
-                &:nth-child(#{$i}) .featured-proj__img {
-                    background: url(nth($projectImg, $i)) 50% 0%/cover no-repeat;
-                }
-            }
             @media screen and (min-width: 1025px) {
                 // min-height: $layoutHeightDesktop;
                 // Featured project description hover
@@ -150,7 +142,7 @@ main {
         &__overflow {
             overflow: hidden;
             width: 82%;
-            height: 290px;
+            height: em(290);
             position: absolute;
             top: 0;
             left: 0;
@@ -213,7 +205,7 @@ main {
             @include transform-fix;
         }
         &__desc {
-            padding: em(70) em(20) em(30);
+            padding: em(70) em(20) em(100);
             @media screen and (min-width: 1025px) {
                 padding: em(70) em(20) em(100);
             }
@@ -251,17 +243,17 @@ main {
         }
         &__icon {
             position: absolute;
-            bottom: 10px;
-            right: 10px;
-            width: 100px;
-            height: 100px;
+            bottom: em(10);
+            right: em(10);
+            width: em(100);
+            height: em(100);
             fill: rgba($white, 0.85);
             &-2,
             &-3 {
                 bottom: 0;
             }
             &-3 {
-                height: 80px;
+                height: em(80);
                 right: 0;
             }
         }
@@ -277,25 +269,27 @@ main {
             }
         }
     }
-    // About Section
-    .about {
+    // About Section && Contact
+    .about, .contact {
         background-color: $primaryColor;
-        .layout__inner--static {
-            top: 250px;
+    }
+    .about {
+        .about__desc {
+            height: auto;
         }
     }
     // Work Section
     .work {
         background-color: $secondaryColor;
-        .layout__inner--static {
-            top: 620px;
-        }
     }
-    // Contact Section
     .contact {
-        background-color: $primaryColor;
-        .layout__inner--static {
-            top: 0;
+        .contact__desc {
+            @media screen and (max-width: 1025px) {
+                height: auto;
+            }
+            p {
+                margin-top: 0;
+            }
         }
     }
 }

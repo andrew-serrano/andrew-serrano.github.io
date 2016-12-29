@@ -94,12 +94,12 @@ img {
     display: block;
     position: relative;
     font-size: em(16);
-    color: $primaryColor;
+    color: $secondaryColor;
     transition: color 0.3s 0s $transition;
     @include transform-fix;
     //No hover for mobile make the button solid
     @media screen and (max-width: 1024px) {
-        background: $primaryColor;
+        background: $secondaryColor;
         font-size: em(20);
         color: $white;
     }
@@ -130,7 +130,7 @@ img {
         width: 100%;
         position: absolute;
         height: 2px;
-        background: $primaryColor;
+        background: $secondaryColor;
         left: 0;
         right: 0;
         margin: auto;
@@ -155,7 +155,7 @@ img {
             width: 2px;
             position: absolute;
             height: 100%;
-            background: $primaryColor;
+            background: $secondaryColor;
             transition: transform 0.3s 0.35s $transition;
         }
         &:before {
@@ -184,7 +184,7 @@ img {
                 bottom: 0;
                 width: 100%;
                 height: 100%;
-                background: $primaryColor;
+                background: $secondaryColor;
                 transform: translateX(-100%);
                 transition: transform 0.3s 0s $transition;
             }
